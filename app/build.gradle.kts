@@ -51,14 +51,11 @@ dependencies {
     //Dependencias
     //libreria principal de  kotlinx serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-
     //convertidor oficial de retrofit para kotlinx serialization
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:2.11.0")
-
     //retrofit & OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     //para imagenes
     implementation("com.github.bumptech.glide:glide:4.16.0")
-
 }
