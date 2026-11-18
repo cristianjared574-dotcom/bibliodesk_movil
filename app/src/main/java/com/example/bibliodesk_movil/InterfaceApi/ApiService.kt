@@ -3,12 +3,14 @@ package com.example.bibliodesk_movil.InterfaceApi
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataCategorias
 import com.example.bibliodesk_movil.Modelo.dataCerrarSesionResponse
+import com.example.bibliodesk_movil.Modelo.dataInicioResponse
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
 import com.example.bibliodesk_movil.Modelo.dataLoginResponse
 import com.example.bibliodesk_movil.Modelo.dataPerfilResponse
 import com.example.bibliodesk_movil.Modelo.dataRegistroRequest
 import com.example.bibliodesk_movil.Modelo.dataRegistroResponse
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -45,6 +47,6 @@ interface ApiService {
 
     //obtener pantalla inicio
     @GET("obtener_inicio.php")
-    suspend fun obtenerInicio(@Header("Authorization") token: String
+    suspend fun obtenerInicio(@Header("Authorization") token: String): Response<dataInicioResponse>
 
 }
