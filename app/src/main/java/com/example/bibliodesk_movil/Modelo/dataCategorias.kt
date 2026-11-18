@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class dataCategorias(
-    @SerialName("id_categoria") val idCategori: Int=0,
+    @SerialName("id_categoria") val idCategoria: Int=0,
     @SerialName("nombre_categoria") val nombreCategoria: String=""
 )
 {
