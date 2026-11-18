@@ -2,6 +2,7 @@ package com.example.bibliodesk_movil.InterfaceApi
 
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataCategorias
+import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
 import com.example.bibliodesk_movil.Modelo.dataLoginResponse
 import retrofit2.http.Body
@@ -15,6 +16,10 @@ interface ApiService {
 
     @GET("obtener_libros.php")
     suspend fun obtenerLibros(@Query("id_categoria") idCategoria: Int): List<dataCatalogoLibros>
+
+    @GET("libro_detalle.php")
+    suspend fun obtenerDetalleLibro(@Query("id_libro")idLibro: Int
+    ): dataLibroDetalleResponse
 
     @POST("login.php")
     suspend fun iniciarSesion(@Body request: dataLoginRequest): dataLoginResponse
