@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Bibliodesk_movil">
         <activity
             android:name=".Vista.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Vista.CatalogoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

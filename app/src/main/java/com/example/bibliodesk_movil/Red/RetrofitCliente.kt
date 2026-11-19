@@ -1,4 +1,4 @@
-package com.example.bibliodesk_movil.Modelo
+package com.example.bibliodesk_movil.Red
 
 import com.example.bibliodesk_movil.InterfaceApi.ApiService
 import kotlinx.serialization.json.Json

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">bibliodesk_movil</string>
+    <string name="txtSeccion">Catálogo de libros</string>
 </resources>
