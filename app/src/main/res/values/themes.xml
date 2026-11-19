@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.Bibliodesk_movil" parent="Base.Theme.Bibliodesk_movil" />
+
+    <style name="IndicadorMenu"
+
+        parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#F3E9D2</item>
+    </style>
 </resources>

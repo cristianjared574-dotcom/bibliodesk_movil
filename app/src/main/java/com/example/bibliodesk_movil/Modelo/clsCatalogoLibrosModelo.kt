@@ -1,6 +1,6 @@
 package com.example.bibliodesk.modelo
 
-import com.example.bibliodesk_movil.Modelo.RetrofitCliente
+import com.example.bibliodesk_movil.Red.RetrofitCliente
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 
