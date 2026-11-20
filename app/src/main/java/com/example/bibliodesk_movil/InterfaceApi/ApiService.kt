@@ -36,17 +36,11 @@ interface ApiService {
 
     @GET("cerrar_sesion.php")
     suspend fun cerrarSesion(): dataCerrarSesionResponse
-    //iniciar sesión
-    @POST("iniciar_sesion.php")
-    suspend fun iniciarsSesion(@Body request: dataLoginRequest): dataLoginResponse
 
-    //  registrar usuario
     @POST("registrar_usuario.php")
-    suspend fun registrarUsuario(@Body request: dataRegistroRequest): dataRegistroResponse
+    suspend fun registrarUsuario(@Body request: dataRegistroRequest): Response<dataRegistroResponse>
 
-
-    //obtener pantalla inicio
     @GET("obtener_inicio.php")
-    suspend fun obtenerInicio(@Header("Authorization") token: String): Response<dataInicioResponse>
+    suspend fun obtenerInicio(@Query("id_usuario") idUsuario: Int): Response<dataInicioResponse>
 
 }
