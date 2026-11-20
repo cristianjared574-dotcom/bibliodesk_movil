@@ -1,9 +1,10 @@
 package com.example.bibliodesk_movil.Modelo
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class dataLoginRequest(
-    val matricula: String,
-    val password: String
+    @SerialName("matricula") val matricula: String = "",
+    @SerialName("password") val password: String = ""
 )

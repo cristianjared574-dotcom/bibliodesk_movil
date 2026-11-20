@@ -10,5 +10,7 @@ data class dataCatalogoLibros(
     val titulo: String,
     val isbn: String? = null,
     val descripcion: String? = null,
-    @SerialName("ruta_portada") val rutaPortada: String? = null
+    @SerialName("ruta_portada") val rutaPortada: String? = null,
+    val autor: String? = null,
+    @SerialName("ejemplares_disponibles") val ejemplaresDisponibles: Int
 )

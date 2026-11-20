@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class dataLoginResponse(
-    val exito: Boolean,
-    val mensaje: String,
-    @SerialName("id_usuario") val idUsuario: Int? = null,
-    val matricula: String? = null,
-    val nombre: String? = null
+    @SerialName("exito") val exito: Boolean = false,
+    @SerialName("mensaje") val mensaje: String = "",
+    @SerialName("id_usuario") val idUsuario: Int = 0,
+    @SerialName("matricula") val matricula: String = "",
+    @SerialName("nombre") val nombre: String = ""
 )
