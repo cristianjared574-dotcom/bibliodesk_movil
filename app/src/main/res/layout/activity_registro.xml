@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView
@@ -7,7 +8,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF7F2"
+    android:background="@color/colorFondo"
     android:fillViewport="true"
     android:overScrollMode="never"
     tools:context=".Vista.RegistroActivity">
@@ -15,18 +16,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FAF7F2"
         android:orientation="vertical"
         android:paddingStart="18dp"
-        android:paddingTop="6dp"
+        android:paddingTop="4dp"
         android:paddingEnd="18dp"
         android:paddingBottom="10dp">
+
+        <!-- BOTONES DE ACCESIBILIDAD -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="end|center_vertical">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAumentarTexto"
@@ -45,9 +47,10 @@
                 android:textColor="#111111"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FAF7F2"
+                android:contentDescription="@string/aumentar_texto"
+                app:backgroundTint="@color/colorFondo"
                 app:cornerRadius="5dp"
-                app:strokeColor="#D4A72C"
+                app:strokeColor="@color/colorDorado"
                 app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -67,16 +70,17 @@
                 android:textColor="#111111"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FAF7F2"
+                android:contentDescription="@string/disminuir_texto"
+                app:backgroundTint="@color/colorFondo"
                 app:cornerRadius="5dp"
-                app:strokeColor="#D4A72C"
+                app:strokeColor="@color/colorDorado"
                 app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLectura"
                 android:layout_width="38dp"
                 android:layout_height="34dp"
-                android:contentDescription="Escuchar contenido"
+                android:contentDescription="@string/escuchar_contenido"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -84,30 +88,33 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:padding="5dp"
-                app:backgroundTint="#FAF7F2"
+                app:backgroundTint="@color/colorFondo"
                 app:cornerRadius="5dp"
                 app:icon="@drawable/ic_lectura"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="21dp"
                 app:iconTint="#111111"
-                app:strokeColor="#D4A72C"
+                app:strokeColor="@color/colorDorado"
                 app:strokeWidth="1dp" />
+
 
         </LinearLayout>
 
+        <!-- LOGOTIPO -->
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="82dp"
-            android:layout_height="82dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
-            android:contentDescription="Logo BiblioDesk"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            android:contentDescription="@string/descripcion_logo" />
 
+        <!-- TÍTULO -->
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -115,33 +122,35 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/playfair_display"
-            android:text="Crear cuenta"
-            android:textColor="#7B1E1E"
-            android:textSize="23sp"
+            android:text="@string/titulo_registro"
+            android:textColor="@color/colorPrimario"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
+        <!-- MATRÍCULA -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Matrícula"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/matricula"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMatricula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -149,44 +158,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtMatricula"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
                 android:fontFamily="@font/montserrat"
-                android:hint="202510006"
+                android:hint="Ej. 202510006"
                 android:inputType="text"
                 android:maxLength="20"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp"
-                android:typeface="normal" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- NOMBRE -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Nombre"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/nombre"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -194,44 +204,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtNombre"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
                 android:fontFamily="@font/montserrat"
-                android:hint="Alejandro"
+                android:hint="Ej. Alejandro"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="80"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp"
-                android:typeface="normal" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- APELLIDO PATERNO -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Apellido Paterno"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/apellido_paterno"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilApellidoPaterno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -239,42 +250,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtApellidoPaterno"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
-                android:hint="Cruz"
+                android:fontFamily="@font/montserrat"
+                android:hint="Ej. Cruz"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="50"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- APELLIDO MATERNO -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Apellido Materno"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/apellido_materno"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilApellidoMaterno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -282,42 +296,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtApellidoMaterno"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
-                android:hint="Hernández"
+                android:fontFamily="@font/montserrat"
+                android:hint="Ej. Hernández"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="50"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- CORREO ELECTRÓNICO -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Correo electrónico"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/correo"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -325,42 +342,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
-                android:hint="alejandroHdz12@gmail.com"
+                android:fontFamily="@font/montserrat"
+                android:hint="Ej. correo@ejemplo.com"
                 android:inputType="textEmailAddress"
                 android:maxLength="150"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- TELÉFONO -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Teléfono"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/telefono"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:hintEnabled="false">
@@ -368,43 +388,46 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtTelefono"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
-                android:hint="7714342802"
-                android:inputType="phone"
+                android:fontFamily="@font/montserrat"
+                android:hint="Ej. 7714342802"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:maxLength="10"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="10dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- CREAR CONTRASEÑA -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Crear contraseña"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/crear_contrasena"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:endIconMode="password_toggle"
@@ -414,42 +437,44 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
+                android:fontFamily="@font/montserrat"
                 android:hint="••••••••"
                 android:inputType="textPassword"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="8dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- CONFIRMAR CONTRASEÑA -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Confirmar contraseña"
-            android:textColor="#302925"
-            android:textSize="13sp" />
+            android:text="@string/confirmar_contrasena"
+            android:textColor="@color/colorTexto"
+            android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilConfirmarContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            app:boxBackgroundColor="#FFFFFF"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp"
-            app:boxCornerRadiusTopEnd="5dp"
+            app:boxBackgroundColor="#FFFFFF"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="#D4A72C"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxStrokeColor="@color/colorDorado"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="2dp"
             app:endIconMode="password_toggle"
@@ -459,21 +484,23 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtConfirmarContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:background="@null"
+                android:fontFamily="@font/montserrat"
                 android:hint="••••••••"
                 android:inputType="textPassword"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingTop="0dp"
                 android:paddingEnd="8dp"
+                android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#211D1B"
                 android:textColorHint="#77716C"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- BOTÓN CREAR CUENTA -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCrearCuenta"
@@ -484,12 +511,13 @@
             android:layout_marginEnd="6dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="Crear cuenta"
+            android:minHeight="0dp"
+            android:text="@string/btn_crear_cuenta"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:backgroundTint="#7B1E1E"
+            app:backgroundTint="@color/colorPrimario"
             app:cornerRadius="5dp" />
 
     </LinearLayout>

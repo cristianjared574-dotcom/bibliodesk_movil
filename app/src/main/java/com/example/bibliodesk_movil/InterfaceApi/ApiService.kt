@@ -41,6 +41,6 @@ interface ApiService {
     suspend fun registrarUsuario(@Body request: dataRegistroRequest): Response<dataRegistroResponse>
 
     @GET("obtener_inicio.php")
-    suspend fun obtenerInicio(@Query("id_usuario") idUsuario: Int): Response<dataInicioResponse>
+    suspend fun obtenerInicio(@Query("id_usuario") idUsuario: Int): dataInicioResponse
 
 }
