@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         menuInferior = findViewById(R.id.menuInferior)
         configurarTamanioTexto()
         configurarLectura()
+        configurarMenu()
 
         presenter = clsInicioPresentador(this)
 
@@ -316,6 +317,42 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
     }
 
+    private fun configurarMenu() {
+
+        val menuInferior = findViewById<BottomNavigationView>(R.id.menuInferior)
+
+        // marcar catalogo como seleccionado
+        menuInferior.selectedItemId = R.id.nav_catalogo
+
+        // evento del menu inferior
+        menuInferior.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_inicio -> {
+                    // obtener el ID del lector
+                    val idUsuario = intent.getIntExtra("id_usuario", -1)
+
+                    // abrir la pantalla de Inicio
+                    val intentInicio = Intent(this, MainActivity::class.java)
+                    intentInicio.putExtra("id_usuario", idUsuario)
+                    intentInicio.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
+                    startActivity(intentInicio)
+                    finish()
+                    true
+                }
+                R.id.nav_catalogo -> {
+                    true
+                }
+                R.id.nav_prestamos -> {
+                    false
+                }
+                R.id.nav_perfil -> {
+                    false
+                }
+                else -> false
+            }
+        }
+    }
 
 
 }
