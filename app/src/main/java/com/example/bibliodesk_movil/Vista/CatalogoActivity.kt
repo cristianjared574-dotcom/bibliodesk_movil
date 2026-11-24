@@ -22,9 +22,8 @@ import com.example.bibliodesk_movil.Presentador.clsCategoriasPresentador
 import com.example.bibliodesk_movil.R
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
-import android.content.Intent
+
 import android.speech.tts.TextToSpeech
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import android.util.TypedValue
 import android.widget.TextView
@@ -86,43 +85,6 @@ class CatalogoActivity : AppCompatActivity() {
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-    }
-
-    private fun configurarMenu() {
-
-        val menuInferior = findViewById<BottomNavigationView>(R.id.menuInferior)
-
-        // marcar catalogo como seleccionado
-        menuInferior.selectedItemId = R.id.nav_catalogo
-
-        // evento del menu inferior
-        menuInferior.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_inicio -> {
-                    // obtener el ID del lector
-                    val idUsuario = intent.getIntExtra("id_usuario", -1)
-
-                    // abrir la pantalla de Inicio
-                    val intentInicio = Intent(this, MainActivity::class.java)
-                    intentInicio.putExtra("id_usuario", idUsuario)
-                    intentInicio.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-
-                    startActivity(intentInicio)
-                    finish()
-                    true
-                }
-                R.id.nav_catalogo -> {
-                    true
-                }
-                R.id.nav_prestamos -> {
-                    false
-                }
-                R.id.nav_perfil -> {
-                    false
-                }
-                else -> false
-            }
         }
     }
 
@@ -219,8 +181,6 @@ class CatalogoActivity : AppCompatActivity() {
             btnAumentar.isEnabled = nivelTexto < 5
             btnDisminuir.isEnabled = nivelTexto > 0
         }
-
-
 
         btnAumentar.setOnClickListener{
             nivelTexto++
