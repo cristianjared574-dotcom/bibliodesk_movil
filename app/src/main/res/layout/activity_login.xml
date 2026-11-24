@@ -36,8 +36,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:padding="0dp"
-                android:background="?attr/selectableItemBackground"
-                android:contentDescription="Aumentar tamaño del texto"
+                android:background="@drawable/fondo_boton_accesibilidad"
                 android:text="A+"
                 android:textAllCaps="false"
                 android:textColor="#000000"
@@ -48,11 +47,11 @@
                 android:id="@+id/btnDisminuirTexto"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_marginLeft="6dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:padding="0dp"
-                android:background="?attr/selectableItemBackground"
-                android:contentDescription="Disminuir tamaño del texto"
+                android:background="@drawable/fondo_boton_accesibilidad"
                 android:text="A−"
                 android:textAllCaps="false"
                 android:textColor="#000000"
@@ -63,9 +62,9 @@
                 android:id="@+id/btnLecturaVoz"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_marginLeft="6dp"
                 android:padding="12dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Leer pantalla en voz alta"
+                android:background="@drawable/fondo_boton_accesibilidad"
                 app:srcCompat="@drawable/ic_lectura_voz"
                 app:tint="#000000" />
 
@@ -77,7 +76,6 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="12dp"
-            android:contentDescription="Logo de BiblioDesk"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_logo" />
 
@@ -89,7 +87,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Iniciar sesión"
+            android:text="@string/txtTituloLogin"
             android:textColor="#7B1E1E"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -100,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text="Accede a tu cuenta de lector"
+            android:text="@string/txtSubtituloLogin"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -124,9 +122,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:labelFor="@id/txtMatriculaLogin"
-                    android:text="Matrícula"
+                    android:text="@string/txtEtiquetaMatricula"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/contenedorMatricula"
@@ -150,7 +148,7 @@
                         android:minHeight="48dp"
                         android:autofillHints="username"
                         android:imeOptions="actionNext"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:padding="12dp"
                         android:textColor="#000000"
@@ -183,9 +181,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:labelFor="@id/txtContrasenaLogin"
-                    android:text="Contraseña"
+                    android:text="@string/txtEtiquetacontrasena"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/contenedorContrasena"
@@ -234,23 +232,23 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="12dp"
-            android:text="Iniciar sesión"
+            android:text="@string/btnIniciarSesion"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:backgroundTint="#7B1E1E"
-            app:cornerRadius="4dp" />
+            app:cornerRadius="4dp"/>
 
         <!-- Crear cuenta -->
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/etiCrearCuenta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="¿Aún no eres usuario?" />
+            android:text="@string/etiCrearCuenta" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCrearCuenta"
@@ -261,7 +259,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="12dp"
-            android:text="Crea una cuenta nueva"
+            android:text="@string/btnCrearCuenta"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
