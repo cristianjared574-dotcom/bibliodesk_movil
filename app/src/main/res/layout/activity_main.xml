@@ -37,10 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
             android:layout_weight="1"
-            android:fontFamily="@font/playfair_display"
+            android:fontFamily="serif"
             android:text="BiblioDesk"
             android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAumentarTexto"
@@ -86,12 +86,11 @@
             app:strokeColor="#D4A72C"
             app:strokeWidth="1dp" />
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAccesibilidad"
             android:layout_width="38dp"
             android:layout_height="34dp"
-            android:contentDescription="Escuchar contenido"
+            android:contentDescription="Accesibilidad"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
@@ -108,7 +107,6 @@
             app:iconTint="#111111"
             app:strokeColor="#D4A72C"
             app:strokeWidth="1dp" />
-
 
     </LinearLayout>
 
@@ -137,7 +135,6 @@
                 android:id="@+id/txtSaludo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
                 android:textColor="#7B1E1E"
                 android:textSize="19sp"
                 android:textStyle="bold"
@@ -148,7 +145,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:fontFamily="@font/montserrat"
                 android:text="Bienvenido a tu biblioteca digital"
                 android:textColor="#302925"
                 android:textSize="15sp" />
@@ -166,7 +162,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/biblioteca_inicio" />
 
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -182,11 +177,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
                         android:text="Explora nuestro&#10;catálogo"
                         android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnVerCatalogo"
@@ -249,7 +242,8 @@
                             android:layout_width="76dp"
                             android:layout_height="106dp"
                             android:contentDescription="Portada del libro"
-                            android:scaleType="centerCrop"/>
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/portada_principito" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -262,7 +256,6 @@
                                 android:id="@+id/txtTituloLibro"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat"
                                 android:textColor="#111111"
                                 android:textSize="16sp"
                                 android:textStyle="bold"
@@ -273,7 +266,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="@font/montserrat"
                                 android:textColor="#4A413C"
                                 android:textSize="13sp"
                                 tools:text="Antoine de Saint-Exupéry" />
@@ -283,7 +275,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="@font/montserrat"
                                 android:textColor="#302925"
                                 android:textSize="14sp"
                                 tools:text="17 noviembre 2026" />
@@ -293,7 +284,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
-                                android:fontFamily="@font/montserrat"
                                 android:textColor="#7B1E1E"
                                 android:textSize="11sp"
                                 android:textStyle="bold"
@@ -357,7 +347,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
                         android:text="Sobre la biblioteca"
                         android:textColor="#7B1E1E"
                         android:textSize="16sp"
@@ -368,7 +357,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/montserrat"
                         android:text="Servicios, noticias y eventos bibliotecarios"
                         android:textColor="#302925"
                         android:textSize="14sp" />

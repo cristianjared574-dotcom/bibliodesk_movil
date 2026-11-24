@@ -79,7 +79,7 @@
                 android:id="@+id/btnLectura"
                 android:layout_width="38dp"
                 android:layout_height="34dp"
-                android:contentDescription="@string/escuchar_contenido"
+
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -116,7 +116,7 @@
         <!-- TÍTULO -->
 
         <TextView
-            android:id="@+id/txtTitulo"
+            android:id="@+id/txtTituloRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
