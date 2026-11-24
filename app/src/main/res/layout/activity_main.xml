@@ -100,7 +100,7 @@
             android:padding="6dp"
             app:backgroundTint="#FFF9EE"
             app:cornerRadius="5dp"
-            app:icon="@drawable/ic_lectura_voz"
+            app:icon="@drawable/ic_accesibilidad"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="20dp"
@@ -160,7 +160,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="Biblioteca"
                     android:scaleType="centerCrop"
-                     />
+                    android:src="@drawable/biblioteca_inicio" />
 
                 <View
                     android:layout_width="match_parent"
@@ -243,7 +243,7 @@
                             android:layout_height="106dp"
                             android:contentDescription="Portada del libro"
                             android:scaleType="centerCrop"
-                             />
+                            android:src="@drawable/portada_principito" />
 
                         <LinearLayout
                             android:layout_width="0dp"
