@@ -3,11 +3,13 @@ package com.example.bibliodesk_movil.InterfaceApi
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataCategorias
 import com.example.bibliodesk_movil.Modelo.dataCerrarSesionResponse
+import com.example.bibliodesk_movil.Modelo.dataContenidoLibro
 import com.example.bibliodesk_movil.Modelo.dataInicioResponse
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
 import com.example.bibliodesk_movil.Modelo.dataLoginResponse
 import com.example.bibliodesk_movil.Modelo.dataPerfilResponse
+import com.example.bibliodesk_movil.Modelo.dataPrestamoHistorial
 import com.example.bibliodesk_movil.Modelo.dataRegistroRequest
 import com.example.bibliodesk_movil.Modelo.dataRegistroResponse
 import retrofit2.Response
@@ -43,4 +45,9 @@ interface ApiService {
     @GET("obtener_inicio.php")
     suspend fun obtenerInicio(@Query("id_usuario") idUsuario: Int): dataInicioResponse
 
+    @GET("historial_prestamo.php")
+    suspend fun obtenerHistorialPrestamos(@Query("id_usuario") idUsuario: Int): List<dataPrestamoHistorial>
+
+    @GET("visor_libro.php")
+    suspend fun obtenerContenidoLibro(@Query("id_libro") idLibro: Int): List<dataContenidoLibro>
 }
