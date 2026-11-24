@@ -3,6 +3,7 @@ package com.example.bibliodesk_movil.InterfaceApi
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataCategorias
 import com.example.bibliodesk_movil.Modelo.dataCerrarSesionResponse
+import com.example.bibliodesk_movil.Modelo.dataContenidoLibro
 import com.example.bibliodesk_movil.Modelo.dataInicioResponse
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
@@ -46,4 +47,7 @@ interface ApiService {
 
     @GET("historial_prestamo.php")
     suspend fun obtenerHistorialPrestamos(@Query("id_usuario") idUsuario: Int): List<dataPrestamoHistorial>
+
+    @GET("visor_libro.php")
+    suspend fun obtenerContenidoLibro(@Query("id_libro") idLibro: Int): List<dataContenidoLibro>
 }

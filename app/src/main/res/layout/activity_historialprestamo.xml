@@ -65,7 +65,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCursos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="175dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="188dp"
             android:layout_marginEnd="1dp"

@@ -62,4 +62,6 @@
     <string name="nav_catalogo">Catálogo</string>
     <string name="nav_prestamos">Préstamos</string>
     <string name="nav_perfil">Perfil</string>
+
+    <string name="txtvisor">Visor de texto</string>
 </resources>
