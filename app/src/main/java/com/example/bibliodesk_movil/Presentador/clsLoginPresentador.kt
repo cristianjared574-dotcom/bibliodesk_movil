@@ -21,11 +21,12 @@ class clsLoginPresentador(private val view: LoginActivity) {
                 val respuesta = withContext(Dispatchers.IO){
                     modelo.iniciarSesion(usuario, clave)
                 }
-                if(respuesta.exito){
-                    view.loginExitoso(respuesta.mensaje,respuesta.nombre)
-                }else{
+                if (respuesta.exito) {
+                    view.loginExitoso(respuesta.mensaje, respuesta.idUsuario)
+                } else {
                     view.mostrarError(respuesta.mensaje)
                 }
+
             }catch (e: Exception){
                 view.mostrarError("Error de conexión: ${e.localizedMessage?: "Error desconocido"}")
             }
