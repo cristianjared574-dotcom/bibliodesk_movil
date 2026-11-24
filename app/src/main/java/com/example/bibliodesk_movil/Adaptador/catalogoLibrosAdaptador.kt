@@ -18,10 +18,10 @@ class catalogoLibrosAdaptador (private val activity: CatalogoActivity, private v
     private var factorTexto = 1f
 
     class LibrosViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val tvTituloLibro: TextView = itemView.findViewById(R.id.txtTituloLibro)
-        val tvNombreAutor: TextView = itemView.findViewById(R.id.txtAutorLibro)
+        val tvTituloLibro: TextView = itemView.findViewById(R.id.txtTitulo)
+        val tvNombreAutor: TextView = itemView.findViewById(R.id.txtAutor)
         val tvdisponible: TextView = itemView.findViewById(R.id.txtDisponibilidad)
-        val portadaLibro: ImageView = itemView.findViewById(R.id.imgPortada)
+        val portadaLibro: ImageView = itemView.findViewById(R.id.imglibro)
         val imgDisponible: ImageView = itemView.findViewById(R.id.imgDisponibilidad)
         val btnVerDetalle: Button = itemView.findViewById(R.id.btnVerDetalle)
 
