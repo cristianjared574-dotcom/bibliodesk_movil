@@ -100,7 +100,7 @@
             android:padding="6dp"
             app:backgroundTint="#FFF9EE"
             app:cornerRadius="5dp"
-            app:icon="@drawable/ic_accesibilidad"
+            app:icon="@drawable/ic_lectura_voz"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="20dp"
