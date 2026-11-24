@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView
@@ -80,7 +79,7 @@
                 android:id="@+id/btnLectura"
                 android:layout_width="38dp"
                 android:layout_height="34dp"
-                android:contentDescription="@string/escuchar_contenido"
+
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
                 android:insetRight="0dp"
@@ -90,7 +89,7 @@
                 android:padding="5dp"
                 app:backgroundTint="@color/colorFondo"
                 app:cornerRadius="5dp"
-                app:icon="@drawable/ic_lectura"
+                app:icon="@drawable/ic_lectura_voz"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="21dp"
