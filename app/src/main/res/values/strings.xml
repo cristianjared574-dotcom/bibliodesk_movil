@@ -2,4 +2,61 @@
     <string name="app_name">bibliodesk_movil</string>
     <string name="txtSeccion">Catálogo de libros</string>
     <string name="txtBuscarLibro">Buscar libro por título o autor…</string>
+
+    <!-- Título -->
+    <string name="titulo_registro">Crear cuenta</string>
+
+    <!-- Campos del formulario -->
+    <string name="matricula">Matrícula</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido Paterno</string>
+    <string name="apellido_materno">Apellido Materno</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="telefono">Teléfono</string>
+    <string name="crear_contrasena">Crear contraseña</string>
+    <string name="confirmar_contrasena">Confirmar contraseña</string>
+
+    <!-- Botón de registro -->
+    <string name="btn_crear_cuenta">Crear cuenta</string>
+
+    <!-- Accesibilidad -->
+    <string name="aumentar_texto">Aumentar tamaño del texto</string>
+    <string name="disminuir_texto">Disminuir tamaño del texto</string>
+    <!--<string name="escuchar_contenido">Escuchar contenido</string> -->
+    <string name="descripcion_logo">Logotipo de BiblioDesk</string>
+
+    <!-- Bienvenida -->
+    <string name="bienvenida_inicio">Bienvenido a tu biblioteca digital</string>
+
+    <!-- Catálogo -->
+    <string name="explorar_catalogo">Explora nuestro catálogo</string>
+    <string name="ver_catalogo">Ver catálogo</string>
+    <string name="descripcion_biblioteca">Imagen de la biblioteca</string>
+
+    <!-- Préstamo actual -->
+    <string name="titulo_prestamo_actual">Préstamo actual</string>
+    <string name="descripcion_portada">Portada del libro</string>
+    <string name="ver_prestamo">Ver Préstamo</string>
+    <string name="sin_prestamos">No tienes préstamos en curso</string>
+
+    <!-- Sobre la biblioteca -->
+    <string name="sobre_biblioteca">Sobre la biblioteca</string>
+    <string name="descripcion_servicios">Servicios, noticias y eventos bibliotecarios</string>
+    <string name="visitar_pagina">Visitar página oficial</string>
+
+
+    <string name="txtSubtituloLogin">Accede a tu cuenta de lector</string>
+    <string name="txtEtiquetaMatricula">Ingrese su matrícula:</string>
+    <string name="txtEtiquetacontrasena">Ingrese su contraseña:</string>
+    <string name="btnVerDetalle">Ver detalle</string>
+    <string name="txtTituloLogin">Iniciar Sesión</string>
+    <string name="btnIniciarSesion">Acceder a cuenta</string>
+    <string name="etiCrearCuenta">¿Aún no eres usuario?</string>
+    <string name="btnCrearCuenta">Regístrate</string>
+    <!-- Menú inferior -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_catalogo">Catálogo</string>
+    <string name="nav_prestamos">Préstamos</string>
+    <string name="nav_perfil">Perfil</string>
+
 </resources>
