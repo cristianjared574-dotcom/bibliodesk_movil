@@ -38,7 +38,7 @@ class catalogoLibrosAdaptador (private val activity: CatalogoActivity, private v
         } else {
             "No disponible"
         }
-        val baseUrl = "http://192.168.100.53/bibliodesk_apis/"
+        val baseUrl = "http://10.73.125.235/bibliodesk_web_movil/"
         val urlImagen = baseUrl + catalogo.rutaPortada
         Glide.with(holder.itemView.context)
             .load(urlImagen)

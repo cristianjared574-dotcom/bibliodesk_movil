@@ -34,7 +34,7 @@ interface ApiService {
     @GET("perfil_usuario.php")
     suspend fun obtenerPerfil(@Query("id_usuario")idUsuario: Int): dataPerfilResponse
 
-    @GET("cerrar_sesion.php")
+    @POST("cerrar_sesion.php")
     suspend fun cerrarSesion(): dataCerrarSesionResponse
     //iniciar sesión
     @POST("iniciar_sesion.php")
@@ -43,7 +43,6 @@ interface ApiService {
     //  registrar usuario
     @POST("registrar_usuario.php")
     suspend fun registrarUsuario(@Body request: dataRegistroRequest): dataRegistroResponse
-
 
     //obtener pantalla inicio
     @GET("obtener_inicio.php")

@@ -1,5 +1,6 @@
 package com.example.bibliodesk_movil.Presentador
 
+import com.example.bibliodesk_movil.Modelo.SesionUsuario
 import com.example.bibliodesk_movil.Modelo.clsLoginModelo
 import com.example.bibliodesk_movil.Vista.LoginActivity
 import kotlinx.coroutines.CoroutineScope
@@ -22,6 +23,15 @@ class clsLoginPresentador(private val view: LoginActivity) {
                     modelo.iniciarSesion(usuario, clave)
                 }
                 if(respuesta.exito){
+                    // Aqui se guardan ls datos de la sesion
+                    SesionUsuario.idUsuario=respuesta.idUsuario
+                    SesionUsuario.nombreCompleto=respuesta.nombre
+                    SesionUsuario.matricula= respuesta.matricula
+                    SesionUsuario.correo= respuesta.correo
+                    SesionUsuario.telefono=respuesta.telefono
+                    SesionUsuario.tipoUsuario=respuesta.tipoUsuario
+                    SesionUsuario.estaActiva=true
+
                     view.loginExitoso(respuesta.mensaje,respuesta.nombre)
                 }else{
                     view.mostrarError(respuesta.mensaje)

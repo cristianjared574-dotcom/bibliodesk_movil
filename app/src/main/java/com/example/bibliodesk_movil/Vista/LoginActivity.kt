@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var txtMatriculaLogin: EditText
     private lateinit var txtContrasenaLogin: EditText
     private lateinit var btnIniciarSesion: Button
-    private lateinit var btnCrearCuenta: Button
+    private lateinit var btnCrearCuenta : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,13 @@ class LoginActivity : AppCompatActivity() {
 
         //listener del boton
         btnIniciarSesion.setOnClickListener(this::ejecutarInicioSesion)
+    }
+    //esto lo agregue para que limpie los campos , del login al volver si ya los pususte
+    // ala hota de concetarlos ya n lo aceptes es lo unico que movi lo demas no tte ko toque si llega a aparecer que movi tu docuemntoo
+    override fun onResume() {
+        super.onResume()
+        txtMatriculaLogin.text.clear()
+        txtContrasenaLogin.text.clear()
     }
 
     fun ejecutarInicioSesion(v: View){

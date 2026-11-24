@@ -69,8 +69,25 @@ class CatalogoActivity : AppCompatActivity() {
         android.util.Log.e("BiblioDeskAPI", mensaje)
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
     }
-
+    // aqui se determina la disponiblidad
     fun abrirDetalle(catalogo: dataCatalogoLibros){
+        val intent= android.content.Intent(this, DetalleLibroActivity::class.java).apply {
+            putExtra("titulo",catalogo.titulo)
+            putExtra("autor",catalogo.autor)
+            putExtra("categoria", catalogo.categoria ?: "")
+            putExtra("isbn",catalogo.isbn ?: "")
+            putExtra("anio",catalogo.anioPublicacion?.toString()?:"")
+            putExtra("paginas",catalogo.numeroPaginas?.toString()?:"")
+            putExtra("ruta_portada",catalogo.rutaPortada)
 
+            val disponibilidad = if (catalogo.ejemplaresDisponibles>0){
+                "DISPONIBLE"
+            }
+            else{
+                "NO DISPONIBLE"
+            }
+            putExtra("disponibilidad",disponibilidad)
+        }
+        startActivity(intent)
     }
 }
