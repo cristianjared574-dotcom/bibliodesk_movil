@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.core.widget.NestedScrollView
@@ -90,10 +89,10 @@
                 android:padding="5dp"
                 app:backgroundTint="@color/colorFondo"
                 app:cornerRadius="5dp"
-                app:icon="@drawable/ic_lectura"
+                app:icon="@drawable/ic_lectura_voz"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:iconSize="21dp"
+                app:iconSize="20dp"
                 app:iconTint="#111111"
                 app:strokeColor="@color/colorDorado"
                 app:strokeWidth="1dp" />
@@ -126,7 +125,7 @@
             android:fontFamily="@font/playfair_display"
             android:text="@string/titulo_registro"
             android:textColor="@color/colorPrimario"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <!-- MATRÍCULA -->
@@ -135,6 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/matricula"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -164,14 +164,15 @@
                 android:hint="Ej. 202510006"
                 android:inputType="text"
                 android:maxLength="20"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -181,6 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/nombre"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -210,14 +212,16 @@
                 android:hint="Ej. Alejandro"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="80"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -227,6 +231,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/apellido_paterno"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -256,14 +261,15 @@
                 android:hint="Ej. Cruz"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="50"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -273,6 +279,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/apellido_materno"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -302,14 +309,15 @@
                 android:hint="Ej. Hernández"
                 android:inputType="textPersonName|textCapWords"
                 android:maxLength="50"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -319,6 +327,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/correo"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -348,14 +357,15 @@
                 android:hint="Ej. correo@ejemplo.com"
                 android:inputType="textEmailAddress"
                 android:maxLength="150"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -365,6 +375,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/telefono"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -390,19 +401,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@null"
+                android:digits="0123456789"
                 android:fontFamily="@font/montserrat"
                 android:hint="Ej. 7714342802"
                 android:inputType="number"
-                android:digits="0123456789"
                 android:maxLength="10"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -412,6 +424,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/crear_contrasena"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -442,14 +455,15 @@
                 android:fontFamily="@font/montserrat"
                 android:hint="••••••••"
                 android:inputType="textPassword"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="8dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -459,6 +473,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/confirmar_contrasena"
             android:textColor="@color/colorTexto"
             android:textSize="12sp" />
@@ -489,14 +504,15 @@
                 android:fontFamily="@font/montserrat"
                 android:hint="••••••••"
                 android:inputType="textPassword"
-                android:singleLine="true"
                 android:paddingStart="10dp"
-                android:paddingEnd="8dp"
                 android:paddingTop="0dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="0dp"
-                android:textColor="#211D1B"
+                android:singleLine="true"
+                android:textColor="#000000"
                 android:textColorHint="#77716C"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
