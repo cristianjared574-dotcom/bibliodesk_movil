@@ -86,8 +86,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // obtener el id del usuario enviado desde Login
-        val idUsuario = intent.getIntExtra("id_usuario", -1)
+        val preferencias = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
+        val idGuardado = preferencias.getInt("id_usuario", -1)
+        val idUsuario = intent.getIntExtra("id_usuario", idGuardado)
 
         if (idUsuario > 0) {
             presenter.obtenerInicio(idUsuario)
@@ -95,6 +96,7 @@ class MainActivity : AppCompatActivity() {
             txtSaludo.text = "¡Bienvenido a BiblioDesk!"
             cardPrestamoActual.visibility = View.GONE
             txtSinPrestamos.visibility = View.GONE
+            mostrarError("No se encontró el ID del usuario al abrir Inicio")
         }
 
 
@@ -118,11 +120,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_prestamos -> {
-                    false
+                    startActivity(Intent(this,HistorialprestamoActivity::class.java))
+                    true
                 }
 
                 R.id.nav_perfil -> {
-                    false
+                    startActivity(Intent(this,PerfilActivity::class.java))
+                    true
                 }
 
                 else -> false
@@ -288,7 +292,7 @@ class MainActivity : AppCompatActivity() {
             val rutaPortada = prestamo.rutaPortada?.trim().orEmpty()
 
             // dirección del servidor donde estan las img
-            val urlBase = "https://christianjsh.somos4a.org/bibliodesk_apis/"
+            val urlBase = "http://192.168.100.53/bibliodesk_apis/"
 
             // obtener la direccion completa de la imagen
             val urlPortada = if (rutaPortada.startsWith("http")) {

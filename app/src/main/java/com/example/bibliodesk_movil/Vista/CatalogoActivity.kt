@@ -165,12 +165,12 @@ class CatalogoActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_prestamos -> {
-                    //startActivity(this, PrestamoActivity::class.java))
-                    false
+                    startActivity(Intent(this, HistorialprestamoActivity::class.java))
+                    true
                 }
 
                 R.id.nav_perfil ->{
-                    //startActivity(this, PrestamoActivity::class.java))
+                    startActivity(Intent(this, PerfilActivity::class.java))
                     false
                 }
 
