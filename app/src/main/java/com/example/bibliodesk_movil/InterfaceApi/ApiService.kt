@@ -5,6 +5,7 @@ import com.example.bibliodesk_movil.Modelo.dataCategorias
 import com.example.bibliodesk_movil.Modelo.dataCerrarSesion
 import com.example.bibliodesk_movil.Modelo.dataContenidoLibro
 import com.example.bibliodesk_movil.Modelo.dataInicioResponse
+import com.example.bibliodesk_movil.Modelo.dataLibroDetalle
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
 import com.example.bibliodesk_movil.Modelo.dataLoginResponse
@@ -25,8 +26,7 @@ interface ApiService {
     suspend fun obtenerLibros(@Query("id_categoria") idCategoria: Int): List<dataCatalogoLibros>
 
     @GET("libro_detalle.php")
-    suspend fun obtenerDetalleLibro(@Query("id_libro")idLibro: Int
-    ): dataLibroDetalleResponse
+    suspend fun obtenerDetalleLibro(@Query("id_libro")idLibro: Int): dataLibroDetalleResponse
 
     @POST("login.php")
     suspend fun iniciarSesion(@Body request: dataLoginRequest): dataLoginResponse

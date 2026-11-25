@@ -22,7 +22,14 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".Vista.CatalogoActivity"
+            android:name=".Vista.PerfilActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Vista.DetalleLibroActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Vista.LoginActivity"
+
             android:exported="false" />
         <activity
             android:name=".Vista.MainActivity"
@@ -31,7 +38,8 @@
             android:name=".Vista.HistorialprestamoActivity"
             android:exported="false" />
         <activity
-            android:name=".Vista.LoginActivity"
+            android:name=".Vista.CatalogoActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

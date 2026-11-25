@@ -1,17 +1,18 @@
 package com.example.bibliodesk_movil.Modelo
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class dataLibroDetalle {
-    val titulo: String=""
-    val autor: String=""
-    val categoria: String=""
-    val descripcion: String?= null
-    val isbn: String?= null
-    val editorial: String=""
-    val anio: Int? =null
-    val paginas: Int? = null
-    val ruta_portada: String?= null
-    val ejemplares_disponibles: Int=0
-}
+data class dataLibroDetalle(
+    @SerialName("titulo") val titulo: String="",
+    @SerialName("autor") val autor: String="",
+    @SerialName("categoria")val categoria: String="",
+    @SerialName("descripcion")val descripcion: String= "",
+    @SerialName("isbn")val isbn: String = "",
+    @SerialName("editorial")val editorial: String="",
+    @SerialName("anio")val anio: Int =0,
+    @SerialName("paginas")val paginas: Int = 0,
+    @SerialName("ruta_portada") val ruta_portada: String="",
+    @SerialName("ejemplares_disponibles")val ejemplares_disponibles: Int=0
+)
