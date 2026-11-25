@@ -18,10 +18,10 @@ class catalogoLibrosAdaptador (private val activity: CatalogoActivity, private v
     private var factorTexto = 1f
 
     class LibrosViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val tvTituloLibro: TextView = itemView.findViewById(R.id.txtTitulo)
-        val tvNombreAutor: TextView = itemView.findViewById(R.id.txtAutor)
+        val tvTituloLibro: TextView = itemView.findViewById(R.id.txtTituloLibro)
+        val tvNombreAutor: TextView = itemView.findViewById(R.id.txtAutorLibro)
         val tvdisponible: TextView = itemView.findViewById(R.id.txtDisponibilidad)
-        val portadaLibro: ImageView = itemView.findViewById(R.id.imglibro)
+        val portadaLibro: ImageView = itemView.findViewById(R.id.imgPortada)
         val imgDisponible: ImageView = itemView.findViewById(R.id.imgDisponibilidad)
         val btnVerDetalle: Button = itemView.findViewById(R.id.btnVerDetalle)
 
@@ -49,7 +49,7 @@ class catalogoLibrosAdaptador (private val activity: CatalogoActivity, private v
             holder.imgDisponible.setImageResource(R.drawable.ic_nodisponible_libro)
             "No disponible"
         }
-        val baseUrl = "http://10.73.125.235/bibliodesk_web_movil/"
+        val baseUrl = "http://192.168.100.53/bibliodesk_apis/"
         val urlImagen = baseUrl + catalogo.rutaPortada
         Glide.with(holder.itemView.context)
             .load(urlImagen)

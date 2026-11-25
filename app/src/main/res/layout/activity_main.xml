@@ -243,7 +243,7 @@
                             android:layout_height="106dp"
                             android:contentDescription="Portada del libro"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/portada_principito" />
+                            android:src="@drawable/logo" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -390,13 +390,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuInferior"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/fondo_menu"
         android:paddingBottom="0dp"
         app:itemActiveIndicatorStyle="@style/IndicadorMenu"
-        app:itemIconSize="22dp"
+        app:itemIconSize="24dp"
         app:itemIconTint="@color/color_menu"
-        app:itemPaddingBottom="2dp"
+        app:itemPaddingBottom="4dp"
         app:itemTextColor="@color/color_menu"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

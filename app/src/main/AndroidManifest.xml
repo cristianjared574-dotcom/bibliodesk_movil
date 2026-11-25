@@ -20,15 +20,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bibliodesk_movil"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".Vista.CatalogoActivity"
-
+            android:exported="false" />
+        <activity
+            android:name=".Vista.MainActivity"
             android:exported="false" />
         <activity
             android:name=".Vista.HistorialprestamoActivity"
             android:exported="false" />
         <activity
-            android:name=".Vista.MainActivity"
+            android:name=".Vista.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
