@@ -9,13 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
-import com.example.bibliodesk_movil.Modelo.SesionUsuario
+import com.example.bibliodesk_movil.Modelo.dataPerfil
+import com.example.bibliodesk_movil.Presentador.clsPerfilPresentador
 import com.example.bibliodesk_movil.R
-import com.example.bibliodesk_movil.Red.RetrofitCliente
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -26,6 +24,8 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var txtCorreo: TextView
     private lateinit var txtTelefono: TextView
     private lateinit var btnCerrarSesion: Button
+
+    private lateinit var presenter: clsPerfilPresentador
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,15 +45,14 @@ class PerfilActivity : AppCompatActivity() {
         txtTelefono = findViewById(R.id.txtTelefono)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
-        actualizarInterfazSesion()
+        presenter = clsPerfilPresentador(this)
 
-        if (SesionUsuario.idUsuario > 0) {
-            cargarPerfilDesdeAPI(SesionUsuario.idUsuario)
-        }
+        val preferencias = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
+        val idUsuario = preferencias.getInt("id_usuario", -1)
 
-        btnRegresar.setOnClickListener {
-            finish()
-        }
+        presenter.obtenerPerfil(idUsuario)
+
+        configurarMenu()
 
         btnCerrarSesion.setOnClickListener {
             val intent = Intent(this, CerrarSesionActivity::class.java)
@@ -61,40 +60,54 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
-    private fun actualizarInterfazSesion() {
-        txtNombreCompleto.text = SesionUsuario.nombreCompleto
-        txtRol.text = SesionUsuario.tipoUsuario
-        txtMatricula.text = "Matrícula: ${SesionUsuario.matricula}"
-        txtCorreo.text = "Correo: ${SesionUsuario.correo}"
-        txtTelefono.text = "Teléfono: ${SesionUsuario.telefono}"
+    fun mostrarPerfil(datos: dataPerfil){
+        txtNombreCompleto.text = datos.nombre_completo
+        txtMatricula.text = datos.matricula
+        txtCorreo.text = datos.correo
+        txtTelefono.text = datos.telefono ?: "No registrado"
+        txtRol.text = datos.tipo_usuario
     }
 
-    private fun cargarPerfilDesdeAPI(idUsuario: Int) {
-        lifecycleScope.launch {
-            try {
-                val respuesta = withContext(Dispatchers.IO) {
-                    RetrofitCliente.apiService.obtenerPerfil(idUsuario)
+    fun mostrarError(mensaje: String){
+        Toast.makeText(this,mensaje, Toast.LENGTH_LONG).show()
+    }
+
+    private fun configurarMenu(){
+        val menu = findViewById<BottomNavigationView>(R.id.menuInferior)
+
+        //cuando abre esta pantalla, se marca catalogo
+        menu.selectedItemId = R.id.nav_perfil
+
+        menu.setOnItemSelectedListener { opcion ->
+            when(opcion.itemId){
+
+
+                R.id.nav_inicio->{
+
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
                 }
 
-                if (respuesta.exito && respuesta.datos != null) {
-                    val perfil = respuesta.datos
-                    SesionUsuario.nombreCompleto = perfil.nombre_completo
-                    SesionUsuario.matricula = perfil.matricula
-                    SesionUsuario.correo = perfil.correo
-                    SesionUsuario.telefono = perfil.telefono ?: ""
-                    SesionUsuario.tipoUsuario = perfil.tipo_usuario
-
-                    actualizarInterfazSesion()
-                } else {
-                    Toast.makeText(this@PerfilActivity,
-                        respuesta.mensaje ?: "No se pudo cargar el perfil",
-                        Toast.LENGTH_SHORT).show()
+                R.id.nav_catalogo -> {
+                    startActivity(Intent(this, CatalogoActivity::class.java))
+                    true
                 }
-            } catch (e: Exception) {
-                Toast.makeText(this@PerfilActivity,
-                    "Error de conexión: ${e.message}",
-                    Toast.LENGTH_SHORT).show()
+
+                R.id.nav_prestamos -> {
+                    startActivity(Intent(this, HistorialprestamoActivity::class.java))
+                    false
+                }
+
+                R.id.nav_perfil ->{
+                    true
+                }
+
+                else -> false
             }
+
         }
     }
 }
+
+

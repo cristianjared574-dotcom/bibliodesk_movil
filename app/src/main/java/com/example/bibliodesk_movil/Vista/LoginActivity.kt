@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
         btnIniciarSesion.setOnClickListener(this::ejecutarInicioSesion)
     }
     //esto lo agregue para que limpie los campos , del login al volver si ya los pususte
-    // ala hota de concetarlos ya n lo aceptes es lo unico que movi lo demas no tte ko toque si llega a aparecer que movi tu docuemntoo
     override fun onResume() {
         super.onResume()
         txtMatriculaLogin.text.clear()
@@ -54,9 +53,12 @@ class LoginActivity : AppCompatActivity() {
         presenter.realizarLogin(usuario,clave)
     }
 
-    fun loginExitoso(mensaje: String, nombreCliente: String){
+    fun loginExitoso(mensaje: String, nombreCliente: String, idUsuario: Int){
+        val preferencias = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
+        preferencias.edit().putInt("id_usuario", idUsuario).apply()
         Toast.makeText(this,mensaje, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("id_usuario",idUsuario)
         startActivity(intent)
         finish()
     }

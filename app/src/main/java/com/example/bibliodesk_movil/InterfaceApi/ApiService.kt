@@ -2,20 +2,18 @@ package com.example.bibliodesk_movil.InterfaceApi
 
 import com.example.bibliodesk_movil.Modelo.dataCatalogoLibros
 import com.example.bibliodesk_movil.Modelo.dataCategorias
-import com.example.bibliodesk_movil.Modelo.dataCerrarSesionResponse
+import com.example.bibliodesk_movil.Modelo.dataCerrarSesion
 import com.example.bibliodesk_movil.Modelo.dataContenidoLibro
 import com.example.bibliodesk_movil.Modelo.dataInicioResponse
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalleResponse
 import com.example.bibliodesk_movil.Modelo.dataLoginRequest
 import com.example.bibliodesk_movil.Modelo.dataLoginResponse
-import com.example.bibliodesk_movil.Modelo.dataPerfilResponse
+import com.example.bibliodesk_movil.Modelo.dataPerfil
 import com.example.bibliodesk_movil.Modelo.dataPrestamoHistorial
 import com.example.bibliodesk_movil.Modelo.dataRegistroRequest
 import com.example.bibliodesk_movil.Modelo.dataRegistroResponse
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -34,10 +32,10 @@ interface ApiService {
     suspend fun iniciarSesion(@Body request: dataLoginRequest): dataLoginResponse
 
     @GET("perfil_usuario.php")
-    suspend fun obtenerPerfil(@Query("id_usuario")idUsuario: Int): dataPerfilResponse
+    suspend fun obtenerPerfil(@Query("id_usuario")idUsuario: Int): dataPerfil
 
     @GET("cerrar_sesion.php")
-    suspend fun cerrarSesion(): dataCerrarSesionResponse
+    suspend fun cerrarSesion(): dataCerrarSesion
 
     @POST("registrar_usuario.php")
     suspend fun registrarUsuario(@Body request: dataRegistroRequest): dataRegistroResponse

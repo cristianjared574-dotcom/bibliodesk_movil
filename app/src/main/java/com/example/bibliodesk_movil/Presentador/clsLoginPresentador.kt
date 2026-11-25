@@ -22,7 +22,7 @@ class clsLoginPresentador(private val view: LoginActivity) {
                     modelo.iniciarSesion(usuario, clave)
                 }
                 if (respuesta.exito) {
-                    view.loginExitoso(respuesta.mensaje, respuesta.nombre)
+                    view.loginExitoso(respuesta.mensaje, respuesta.nombre, respuesta.idUsuario)
                 } else {
                     view.mostrarError(respuesta.mensaje)
                 }

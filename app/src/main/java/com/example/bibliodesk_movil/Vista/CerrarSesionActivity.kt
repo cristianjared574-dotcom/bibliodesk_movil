@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.bibliodesk_movil.Modelo.SesionUsuario
+import com.example.bibliodesk_movil.Presentador.clsCerrarSesionPresentador
 import com.example.bibliodesk_movil.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -17,6 +18,8 @@ class CerrarSesionActivity : AppCompatActivity() {
     private lateinit var btnConfirmar: Button
     private lateinit var btnCancelar: Button
     private lateinit var menuInferior: BottomNavigationView
+
+    private lateinit var presenter: clsCerrarSesionPresentador
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,18 +48,35 @@ class CerrarSesionActivity : AppCompatActivity() {
         // btoon Confirmar cierra sesión y vuelve al inicio de sesión
         btnConfirmar.setOnClickListener {
             // borra los datos del usuario actual
-            SesionUsuario.cerrarSesion()
-
-            // aqui rregresa a la pantalla de Login
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+            presenter.cerrarSesion()
         }
         // el botón Cancelar vuelve a Perfil sin cerrar sesión
         btnCancelar.setOnClickListener {
-            finish()
+           finish()
         }
+    }
 
+    fun cerrarSesionExitoso(mensaje: String) {
+
+        // Eliminar datos guardados del usuario
+        val preferencias = getSharedPreferences("BiblioDesk", MODE_PRIVATE)
+
+        preferencias.edit().clear().apply()
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+
+        // Ir al Login
+        val intent = Intent(this, LoginActivity::class.java)
+
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+        startActivity(intent)
+        finish()
+    }
+
+    // Mostrar errores
+    fun mostrarError(mensaje: String) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
     }
 }
