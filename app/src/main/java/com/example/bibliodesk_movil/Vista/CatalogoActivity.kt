@@ -108,9 +108,26 @@ class CatalogoActivity : AppCompatActivity() {
             lectorVoz?.speak(mensaje, TextToSpeech.QUEUE_FLUSH, null, "error_login")
         }
     }
-
+    // aqui se determina la disponiblidad
     fun abrirDetalle(catalogo: dataCatalogoLibros){
+        val intent= android.content.Intent(this, DetalleLibroActivity::class.java).apply {
+            putExtra("titulo",catalogo.titulo)
+            putExtra("autor",catalogo.autor)
+            putExtra("categoria", catalogo.categoria ?: "")
+            putExtra("isbn",catalogo.isbn ?: "")
+            putExtra("anio",catalogo.anioPublicacion?.toString()?:"")
+            putExtra("paginas",catalogo.numeroPaginas?.toString()?:"")
+            putExtra("ruta_portada",catalogo.rutaPortada)
 
+            val disponibilidad = if (catalogo.ejemplaresDisponibles>0){
+                "DISPONIBLE"
+            }
+            else{
+                "NO DISPONIBLE"
+            }
+            putExtra("disponibilidad",disponibilidad)
+        }
+        startActivity(intent)
     }
 
     private fun filtrarLibros(){

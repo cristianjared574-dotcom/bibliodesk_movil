@@ -9,5 +9,8 @@ data class dataLoginResponse(
     @SerialName("mensaje") val mensaje: String = "",
     @SerialName("id_usuario") val idUsuario: Int = 0,
     @SerialName("matricula") val matricula: String = "",
-    @SerialName("nombre") val nombre: String = ""
+    @SerialName("nombre") val nombre: String = "",
+    @SerialName ("correo") val correo: String= "",
+    @SerialName("telefono") val telefono: String="",
+    @SerialName("tipo_usuario") val tipoUsuario: String=""
 )
