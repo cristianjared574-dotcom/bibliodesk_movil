@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var txtMatriculaLogin: EditText
     private lateinit var txtContrasenaLogin: EditText
     private lateinit var btnIniciarSesion: Button
-    private lateinit var btnCrearCuenta: Button
+    private lateinit var btnCrearCuenta : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,12 @@ class LoginActivity : AppCompatActivity() {
         //listener del boton
         btnIniciarSesion.setOnClickListener(this::ejecutarInicioSesion)
     }
+    //esto lo agregue para que limpie los campos , del login al volver si ya los pususte
+    override fun onResume() {
+        super.onResume()
+        txtMatriculaLogin.text.clear()
+        txtContrasenaLogin.text.clear()
+    }
 
     fun ejecutarInicioSesion(v: View){
         val usuario = txtMatriculaLogin.text.toString().toString().trim()
@@ -47,9 +53,12 @@ class LoginActivity : AppCompatActivity() {
         presenter.realizarLogin(usuario,clave)
     }
 
-    fun loginExitoso(mensaje: String, nombreCliente: String){
+    fun loginExitoso(mensaje: String, nombreCliente: String, idUsuario: Int){
+        val preferencias = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
+        preferencias.edit().putInt("id_usuario", idUsuario).apply()
         Toast.makeText(this,mensaje, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("id_usuario",idUsuario)
         startActivity(intent)
         finish()
     }
