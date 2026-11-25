@@ -110,6 +110,7 @@ class CatalogoActivity : AppCompatActivity() {
     }
     // aqui se determina la disponiblidad
     fun abrirDetalle(catalogo: dataCatalogoLibros){
+        /*
         val intent= android.content.Intent(this, DetalleLibroActivity::class.java).apply {
             putExtra("titulo",catalogo.titulo)
             putExtra("autor",catalogo.autor)
@@ -127,6 +128,12 @@ class CatalogoActivity : AppCompatActivity() {
             }
             putExtra("disponibilidad",disponibilidad)
         }
+        startActivity(intent)
+
+         */
+
+        val intent=android.content.Intent( this, DetalleLibroActivity::class.java
+        ).apply { putExtra("id_libro",catalogo.idLibro) }
         startActivity(intent)
     }
 

@@ -1,5 +1,6 @@
 package com.example.bibliodesk_movil.Vista
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.bibliodesk_movil.Modelo.dataLibroDetalle
 import com.example.bibliodesk_movil.R
 import com.example.bibliodesk_movil.Red.RetrofitCliente
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +34,7 @@ class DetalleLibroActivity : AppCompatActivity() {
     private lateinit var btnLeerTexto: Button
     private lateinit var btnDisponibilidad: Button
 
-    private val baseUrl = "http://192.168.100.53/bibliodesk_apis/" // ✅ Tu URL
+    private val baseUrl = "http://10.166.38.186/bibliodesk_apis/" // ✅ Tu URL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,61 +59,26 @@ class DetalleLibroActivity : AppCompatActivity() {
         btnLeerTexto = findViewById(R.id.btnLeerTexto)
         btnDisponibilidad = findViewById(R.id.btnDisponibilidad)
 
-        val idLibro = intent.getIntExtra("id_libro", 0)
-        if (idLibro > 0) {
-            cargarDetalle(idLibro)
-        } else {
-            Toast.makeText(this, "Libro no válido", Toast.LENGTH_SHORT).show()
-            finish()
-        }
 
         btnRegresar.setOnClickListener { finish() }
+
         btnLeerTexto.setOnClickListener {
-            Toast.makeText(this, "Función próximamente", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, VisortextoActivity::class.java))
         }
     }
-
-    private fun cargarDetalle(idLibro: Int) {
-        lifecycleScope.launch {
-            try {
-                val res = withContext(Dispatchers.IO) {
-                    RetrofitCliente.apiService.obtenerDetalleLibro(idLibro)
-                }
-
-                if (res.exito && res.datos != null) {
-                    val lib = res.datos
-                    txtTitulo.text = lib.titulo
-                    txtAutor.text = lib.autor
-                    txtCategoria.text = lib.categoria
-                    txtDescripcion.text = lib.descripcion ?: ""
-                    txtIsbn.text = "ISBN: ${lib.isbn ?: "N/A"}"
-                    txtEditorial.text = "Editorial: ${lib.editorial}"
-                    txtAnio.text = "Año: ${lib.anio ?: "N/A"}"
-                    txtPaginas.text = "Páginas: ${lib.paginas ?: "N/A"}"
-
-                    if (lib.ejemplares_disponibles > 0) {
-                        btnDisponibilidad.text = "Disponible (${lib.ejemplares_disponibles})"
-                        btnDisponibilidad.setBackgroundColor(0xFF7B1E1E.toInt())
-                    } else {
-                        btnDisponibilidad.text = "No disponible"
-                        btnDisponibilidad.setBackgroundColor(0xFF9E9E9E.toInt())
-                    }
-
-                    if (!lib.ruta_portada.isNullOrEmpty()) {
-                        Glide.with(this@DetalleLibroActivity)
-                            .load(baseUrl + lib.ruta_portada)
-                            .placeholder(android.R.drawable.ic_menu_gallery)
-                            .error(android.R.drawable.stat_notify_error)
-                            .into(ivPortada)
-                    }
-                } else {
-                    Toast.makeText(this@DetalleLibroActivity,
-                        res.mensaje ?: "Error al cargar", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                Toast.makeText(this@DetalleLibroActivity,
-                    "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
+    fun mostrarDetalleLibro(libro: dataLibroDetalle){
+        txtTitulo.text = libro.titulo
+        txtAutor.text = libro.autor
+        txtCategoria.text = libro.categoria
+        txtDescripcion.text = libro.descripcion
+        txtEditorial.text = "Editorial"+libro.editorial
+        txtIsbn.text = "ISBN: "+libro.isbn
+        txtAnio.text = "Año: "+libro.anio.toString()
+        txtPaginas.text = "Páginas: "+libro.paginas.toString()
     }
+
+    fun mostrarError(mensaje: String){
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+    }
+
 }
