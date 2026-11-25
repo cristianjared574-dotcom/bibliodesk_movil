@@ -58,8 +58,7 @@ class MainActivity : AppCompatActivity() {
         cardPrestamoActual = findViewById(R.id.cardPrestamoActual)
         txtSinPrestamos = findViewById(R.id.txtSinPrestamos)
         menuInferior = findViewById(R.id.menuInferior)
-        configurarTamanioTexto()
-        configurarLectura()
+        configurarAccesibilidad()
         configurarMenu()
 
         presenter = clsInicioPresentador(this)
@@ -137,6 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun abrirCatalogo(v: View) {
         val idUsuario = intent.getIntExtra("id_usuario", -1)
 
@@ -146,22 +146,32 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun configurarTamanioTexto() {
+    private fun configurarAccesibilidad() {
 
-        // obtener botones de accesibilidad
+        // Obtener los botones de accesibilidad
         val btnAumentar = findViewById<View>(R.id.btnAumentarTexto)
         val btnDisminuir = findViewById<View>(R.id.btnDisminuirTexto)
+        val btnVoz = findViewById<View>(R.id.btnAccesibilidad)
 
-        // textos que cambiaran de tamaño
-        val textos = listOf<TextView>(findViewById(R.id.txtNombreSistema), txtSaludo, findViewById(R.id.txtBienvenida),
-            findViewById(R.id.txtTituloPrestamo), txtTituloLibro, txtAutorLibro, txtFechaLimite, txtEstadoPrestamo,
-            txtSinPrestamos, findViewById(R.id.btnVerCatalogo), findViewById(R.id.btnVerPrestamo), findViewById(R.id.btnPaginaOficial)
+        // Textos que cambiarán de tamaño
+        val textos = listOf<TextView>(
+            findViewById(R.id.txtNombreSistema),
+            txtSaludo,
+            findViewById(R.id.txtBienvenida),
+            findViewById(R.id.txtTituloPrestamo),
+            txtTituloLibro,
+            txtAutorLibro,
+            txtFechaLimite,
+            txtEstadoPrestamo,
+            txtSinPrestamos,
+            findViewById(R.id.btnVerCatalogo),
+            findViewById(R.id.btnVerPrestamo),
+            findViewById(R.id.btnPaginaOficial)
         )
 
-        // guardar los tamaños originales
+        // Guardar los tamaños originales
         val tamaniosOriginales = textos.map { it.textSize }
 
-        // aplicar el tamaño seleccionado
         fun aplicarTamanio() {
             val factor = 1f + nivelTexto * 0.10f
 
@@ -176,61 +186,64 @@ class MainActivity : AppCompatActivity() {
             btnDisminuir.isEnabled = nivelTexto > 0
         }
 
-        // A+
+        // Aumentar tamaño
         btnAumentar.setOnClickListener {
-            nivelTexto++
-            aplicarTamanio()
+            if (nivelTexto < 5) {
+                nivelTexto++
+                aplicarTamanio()
+            }
         }
 
-        // A-
+        // Disminuir tamaño
         btnDisminuir.setOnClickListener {
-            nivelTexto--
-            aplicarTamanio()
+            if (nivelTexto > 0) {
+                nivelTexto--
+                aplicarTamanio()
+            }
         }
+
         aplicarTamanio()
-    }
-
-
-    private fun configurarLectura() {
-
-        // Obtener el botón de accesibilidad
-        val btnLectura = findViewById<View>(R.id.btnAccesibilidad)
 
         // Preparar el lector de voz
-        btnLectura.isEnabled = false
+        btnVoz.isEnabled = false
+        btnVoz.contentDescription = "Activar lectura en voz alta"
 
         lectorVoz = TextToSpeech(this) { estado ->
-            if (estado == TextToSpeech.SUCCESS) {
 
+            if (estado == TextToSpeech.SUCCESS) {
                 val idioma = lectorVoz?.setLanguage(
                     Locale.forLanguageTag("es-MX")
                 )
 
-                btnLectura.isEnabled =
+                btnVoz.isEnabled =
                     idioma != null &&
                             idioma != TextToSpeech.LANG_MISSING_DATA &&
                             idioma != TextToSpeech.LANG_NOT_SUPPORTED
             }
         }
 
-        // Evento del botón
-        btnLectura.setOnClickListener {
+        // Activar o detener lectura
+        btnVoz.setOnClickListener {
 
             if (vozActivada) {
 
-                // Detener la lectura
                 lectorVoz?.stop()
                 vozActivada = false
+                btnVoz.isSelected = false
+                btnVoz.contentDescription = "Activar lectura en voz alta"
 
             } else {
 
-                // obtener los textos de Inicio
                 val saludo = txtSaludo.text.toString()
 
-                val bienvenida = findViewById<TextView>(R.id.txtBienvenida).text.toString()
+                val bienvenida = findViewById<TextView>(
+                    R.id.txtBienvenida
+                ).text.toString()
 
-                // preparar el contenido para leer
-                val contenido = if (cardPrestamoActual.visibility == View.VISIBLE && txtTituloLibro.text.isNotBlank()) {
+                val contenido = if (
+                    cardPrestamoActual.visibility == View.VISIBLE &&
+                    txtTituloLibro.text.isNotBlank()
+                ) {
 
                     "$saludo. $bienvenida. " +
                             "Préstamo actual: ${txtTituloLibro.text}. " +
@@ -246,25 +259,27 @@ class MainActivity : AppCompatActivity() {
 
                     "$saludo. $bienvenida"
                 }
-                // leer el contenido
+
                 lectorVoz?.speak(
                     contenido,
                     TextToSpeech.QUEUE_FLUSH,
                     null,
                     "lectura_inicio"
                 )
+
                 vozActivada = true
+                btnVoz.isSelected = true
+                btnVoz.contentDescription = "Desactivar lectura en voz alta"
             }
         }
     }
+
 
     override fun onDestroy() {
         lectorVoz?.stop()
         lectorVoz?.shutdown()
         super.onDestroy()
     }
-
-
 
     // mostrar la información obtenida de la API
     fun mostrarInicio(respuesta: dataInicioResponse) {
