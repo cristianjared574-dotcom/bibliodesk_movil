@@ -7,12 +7,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class clsDetalleLibroPresentador(private val view: DetalleLibroActivity) {
+
     private val modelo = clsDetalleLibroModelo()
 
-    fun cargarDetalle(idLibro: Int){
+    fun cargarDetalle(idLibro: Int) {
+        if (idLibro <= 0) {
+            view.mostrarError("ID de libro inválido")
+            return
+        }
+
         CoroutineScope(Dispatchers.Main).launch {
-            try{
-                val libro = modelo.obtenerDetalleLibro(idLibro)
+            try {
+                val respuesta = modelo.obtenerDetalleLibro(idLibro)
 
                 if(libro.exito && libro.datos != null){
                     view.mostrarDetalleLibro(libro.datos)

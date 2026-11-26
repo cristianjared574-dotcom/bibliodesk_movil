@@ -10,15 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalle
 import com.example.bibliodesk_movil.Presentador.clsDetalleLibroPresentador
 import com.example.bibliodesk_movil.R
-import com.example.bibliodesk_movil.Red.RetrofitCliente
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DetalleLibroActivity : AppCompatActivity() {
 
@@ -72,23 +68,75 @@ class DetalleLibroActivity : AppCompatActivity() {
         }
         btnRegresar.setOnClickListener { finish() }
 
+        configurarMenu()
         btnLeerTexto.setOnClickListener {
             startActivity(Intent(this, VisortextoActivity::class.java))
         }
+
+        presentador = clsDetalleLibroPresentador(this)
+        val idLibro = intent.getIntExtra("id_libro", 0)
+        presentador.cargarDetalle(idLibro)
     }
-    fun mostrarDetalleLibro(libro: dataLibroDetalle){
+
+    fun mostrarDetalleLibro(libro: dataLibroDetalle) {
         txtTitulo.text = libro.titulo
         txtAutor.text = libro.autor
         txtCategoria.text = libro.categoria
         txtDescripcion.text = libro.descripcion
-        txtEditorial.text = "Editorial"+libro.editorial
-        txtIsbn.text = "ISBN: "+libro.isbn
-        txtAnio.text = "Año: "+libro.anio.toString()
-        txtPaginas.text = "Páginas: "+libro.paginas.toString()
+        txtEditorial.text = "Editorial: " + libro.editorial
+        txtIsbn.text = "ISBN: " + libro.isbn
+        txtAnio.text = "Año: " + libro.anio.toString()
+        txtPaginas.text = "Páginas: " + libro.paginas.toString()
+        btnDisponibilidad.text = if (libro.ejemplares_disponibles > 0) {
+            "Solicitar préstamo (${libro.ejemplares_disponibles} disponibles)"
+        } else {
+            "No disponible"
+        }
+        btnDisponibilidad.isEnabled = libro.ejemplares_disponibles > 0
+
+        if (libro.ruta_portada.isNotBlank()) {
+            val urlPortada = if (libro.ruta_portada.startsWith("http")) {
+                libro.ruta_portada
+            } else {
+                baseUrl + libro.ruta_portada.removePrefix("/")
+            }
+            Glide.with(this)
+                .load(urlPortada)
+                .into(ivPortada)
+        }
     }
 
-    fun mostrarError(mensaje: String){
+    fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
     }
+    private fun configurarMenu(){
+        val menu = findViewById<BottomNavigationView>(R.id.menuInferior)
 
+        //cuando abre esta pantalla, se marca catalogo
+        menu.selectedItemId = R.id.nav_catalogo
+
+        menu.setOnItemSelectedListener { opcion ->
+            when(opcion.itemId){
+                R.id.nav_catalogo -> true
+
+                R.id.nav_inicio->{
+                    startActivity(Intent(this, MainActivity::class.java))
+                    false
+                }
+
+                R.id.nav_prestamos -> {
+                    startActivity(Intent(this, HistorialprestamoActivity::class.java))
+                    true
+                }
+
+                R.id.nav_perfil ->{
+                    startActivity(Intent(this, PerfilActivity::class.java))
+                    false
+                }
+
+                else -> false
+            }
+
+        }
+    }
 }

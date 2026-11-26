@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
         txtMatriculaLogin = findViewById(R.id.txtMatriculaLogin)
         txtContrasenaLogin = findViewById(R.id.txtContrasenaLogin)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+        btnCrearCuenta = findViewById(R.id.btnCrearCuenta)
 
         //inicializar presentador
         presenter = clsLoginPresentador(this)
