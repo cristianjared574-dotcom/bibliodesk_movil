@@ -48,7 +48,7 @@ class PerfilActivity : AppCompatActivity() {
         presenter = clsPerfilPresentador(this)
 
         val preferencias = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
-        val idUsuario = preferencias.getInt("id_usuario", -1)
+        val idUsuario = preferencias.getInt("id_usuario", 0)
 
         presenter.obtenerPerfil(idUsuario)
 
@@ -60,12 +60,18 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
-    fun mostrarPerfil(datos: dataPerfil){
-        txtNombreCompleto.text = datos.nombre_completo
-        txtMatricula.text = datos.matricula
-        txtCorreo.text = datos.correo
-        txtTelefono.text = datos.telefono ?: "No registrado"
-        txtRol.text = datos.tipo_usuario
+    fun mostrarPerfil(respuesta: dataPerfil){
+        val lector = respuesta.datos
+
+        if(lector == null){
+            mostrarError("No se recibieron datos")
+            return
+        }
+        txtNombreCompleto.text = lector.nombre_completo
+        txtMatricula.text = lector.matricula
+        txtCorreo.text = lector.correo
+        txtTelefono.text = lector.telefono ?: "No registrado"
+        txtRol.text = lector.tipo_usuario
     }
 
     fun mostrarError(mensaje: String){
