@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.bibliodesk_movil.Modelo.dataLibroDetalle
+import com.example.bibliodesk_movil.Presentador.clsDetalleLibroPresentador
 import com.example.bibliodesk_movil.R
 import com.example.bibliodesk_movil.Red.RetrofitCliente
 import kotlinx.coroutines.Dispatchers
@@ -33,8 +34,8 @@ class DetalleLibroActivity : AppCompatActivity() {
     private lateinit var txtPaginas: TextView
     private lateinit var btnLeerTexto: Button
     private lateinit var btnDisponibilidad: Button
+    private lateinit var  presenter:clsDetalleLibroPresentador
 
-    private val baseUrl = "http://10.166.38.186/bibliodesk_apis/" // ✅ Tu URL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +60,16 @@ class DetalleLibroActivity : AppCompatActivity() {
         btnLeerTexto = findViewById(R.id.btnLeerTexto)
         btnDisponibilidad = findViewById(R.id.btnDisponibilidad)
 
+        presenter = clsDetalleLibroPresentador(this)
+        // Recuperar el ID del libro enviado desde CatalogoActivity
+        val idLibro = intent.getIntExtra("id_libro", 0)
 
+        // Llamar al Presentador para cargar el detalle
+        if (idLibro > 0) {
+            presenter.cargarDetalle(idLibro)
+        } else {
+            mostrarError("No se recibió un identificador válido del libro")
+        }
         btnRegresar.setOnClickListener { finish() }
 
         btnLeerTexto.setOnClickListener {
