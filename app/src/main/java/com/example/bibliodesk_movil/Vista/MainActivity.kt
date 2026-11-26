@@ -292,7 +292,7 @@ class MainActivity : AppCompatActivity() {
             val rutaPortada = prestamo.rutaPortada?.trim().orEmpty()
 
             // dirección del servidor donde estan las img
-            val urlBase = "http://192.168.100.53/bibliodesk_apis/"
+            val urlBase = "https://christianjsh.somos4a.org/bibliodesk_apis/"
 
             // obtener la direccion completa de la imagen
             val urlPortada = if (rutaPortada.startsWith("http")) {
