@@ -50,6 +50,10 @@ class LoginActivity : AppCompatActivity() {
         //listener del boton
         btnIniciarSesion.setOnClickListener(this::ejecutarInicioSesion)
 
+        btnCrearCuenta.setOnClickListener{
+            startActivity(Intent(this,RegistroActivity::class.java))
+        }
+
         configurarAccesibilidad()
     }
     //esto lo agregue para que limpie los campos , del login al volver si ya los pususte

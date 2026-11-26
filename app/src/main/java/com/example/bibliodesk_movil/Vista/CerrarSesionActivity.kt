@@ -36,6 +36,8 @@ class CerrarSesionActivity : AppCompatActivity() {
         btnCancelar = findViewById(R.id.btnCancelar)
         menuInferior = findViewById(R.id.menuInferior)
 
+        presenter=clsCerrarSesionPresentador(this)
+
         // Marcar Perfil seleccionado en el menú inferior
         menuInferior.selectedItemId = R.id.nav_perfil
 
@@ -53,7 +55,6 @@ class CerrarSesionActivity : AppCompatActivity() {
         btnCancelar.setOnClickListener {
            finish()
         }
-        presenter.cerrarSesion()
     }
 
     fun cerrarSesionExitoso(mensaje: String) {
@@ -61,7 +62,7 @@ class CerrarSesionActivity : AppCompatActivity() {
         // Eliminar datos guardados del usuario
         val preferencias = getSharedPreferences("BiblioDesk", MODE_PRIVATE)
 
-        preferencias.edit().clear().apply()
+        preferencias.edit().remove("id_usuario").apply()
 
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
 
