@@ -59,7 +59,17 @@ class RegistroActivity : AppCompatActivity() {
         presenter = clsRegistroPresentador(this)
 
         btnCrearCuenta.setOnClickListener(this::ejecutarRegistro)
+
+
+
+        val btnRegresar = findViewById<View>(R.id.btnRegresar)
+
+        btnRegresar.setOnClickListener {
+            finish()
+        }
+
         configurarAccesibilidad()
+
     }
 
     fun ejecutarRegistro(v: View) {
