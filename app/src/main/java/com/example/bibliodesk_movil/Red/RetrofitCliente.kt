@@ -8,7 +8,7 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
 
 object RetrofitCliente {
-    private const val BASE_URL="http://192.168.100.53/bibliodesk_apis/"
+    private const val BASE_URL="https://christianjsh.somos4a.org/bibliodesk_apis/"
 
     private val jsonConfig= Json {
         ignoreUnknownKeys=true
