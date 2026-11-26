@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.bibliodesk_movil.Presentador.clsRegistroPresentador
 import com.example.bibliodesk_movil.R
+import android.speech.tts.TextToSpeech
+import android.util.TypedValue
+import android.widget.TextView
+import java.util.Locale
 
 
 class RegistroActivity : AppCompatActivity() {
@@ -27,6 +31,9 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var edtContrasena: EditText
     private lateinit var edtConfirmarContrasena: EditText
     private lateinit var btnCrearCuenta: Button
+    private var nivelTexto = 0
+    private var lectorVoz: TextToSpeech? = null
+    private var vozActivada = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +59,7 @@ class RegistroActivity : AppCompatActivity() {
         presenter = clsRegistroPresentador(this)
 
         btnCrearCuenta.setOnClickListener(this::ejecutarRegistro)
+        configurarAccesibilidad()
     }
 
     fun ejecutarRegistro(v: View) {
@@ -69,6 +77,129 @@ class RegistroActivity : AppCompatActivity() {
             correo, telefono, contrasena, confirmarContrasena
         )
     }
+
+
+    private fun configurarAccesibilidad() {
+
+        // Obtener los botones de accesibilidad
+        val btnAumentar = findViewById<View>(R.id.btnAumentarTexto)
+        val btnDisminuir = findViewById<View>(R.id.btnDisminuirTexto)
+        val btnVoz = findViewById<View>(R.id.btnLectura)
+
+        // Textos que cambiarán de tamaño
+        val textos = listOf<TextView>(
+            edtMatricula,
+            edtNombre,
+            edtApellidoPaterno,
+            edtApellidoMaterno,
+            edtCorreo,
+            edtTelefono,
+            edtContrasena,
+            edtConfirmarContrasena,
+            btnCrearCuenta
+        )
+
+        // Guardar los tamaños originales
+        val tamaniosOriginales = textos.map { it.textSize }
+
+        fun aplicarTamanio() {
+            val factor = 1f + nivelTexto * 0.10f
+
+            textos.forEachIndexed { indice, texto ->
+                texto.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    tamaniosOriginales[indice] * factor
+                )
+            }
+
+            btnAumentar.isEnabled = nivelTexto < 5
+            btnDisminuir.isEnabled = nivelTexto > 0
+        }
+
+        // Aumentar tamaño
+        btnAumentar.setOnClickListener {
+            if (nivelTexto < 5) {
+                nivelTexto++
+                aplicarTamanio()
+            }
+        }
+
+        // Disminuir tamaño
+        btnDisminuir.setOnClickListener {
+            if (nivelTexto > 0) {
+                nivelTexto--
+                aplicarTamanio()
+            }
+        }
+
+        aplicarTamanio()
+
+        // Preparar el lector de voz
+        btnVoz.isEnabled = false
+        btnVoz.contentDescription = "Activar lectura en voz alta"
+
+        lectorVoz = TextToSpeech(this) { estado ->
+
+            if (estado == TextToSpeech.SUCCESS) {
+
+                val idioma = lectorVoz?.setLanguage(
+                    Locale.forLanguageTag("es-MX")
+                )
+
+                btnVoz.isEnabled =
+                    idioma != null &&
+                            idioma != TextToSpeech.LANG_MISSING_DATA &&
+                            idioma != TextToSpeech.LANG_NOT_SUPPORTED
+            }
+        }
+
+        // Activar o detener lectura
+        btnVoz.setOnClickListener {
+
+            if (vozActivada) {
+
+                lectorVoz?.stop()
+                vozActivada = false
+                btnVoz.isSelected = false
+                btnVoz.contentDescription = "Activar lectura en voz alta"
+
+            } else {
+
+                // Instrucciones del formulario
+                val contenido =
+                    "Crear cuenta en BiblioDesk. " +
+                            "Completa los siguientes campos para registrarte. " +
+                            "Matrícula. " +
+                            "Nombre. " +
+                            "Apellido paterno. " +
+                            "Apellido materno. " +
+                            "Correo electrónico. " +
+                            "Teléfono. " +
+                            "Crear contraseña. " +
+                            "Confirmar contraseña. " +
+                            "Al terminar, presiona el botón Crear cuenta."
+
+                // Leer las instrucciones
+                lectorVoz?.speak(
+                    contenido,
+                    TextToSpeech.QUEUE_FLUSH,
+                    null,
+                    "lectura_registro"
+                )
+
+                vozActivada = true
+                btnVoz.isSelected = true
+                btnVoz.contentDescription = "Desactivar lectura en voz alta"
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        lectorVoz?.stop()
+        lectorVoz?.shutdown()
+        super.onDestroy()
+    }
+
 
     fun registroExitoso(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show() //mensaje temporal como en consola
