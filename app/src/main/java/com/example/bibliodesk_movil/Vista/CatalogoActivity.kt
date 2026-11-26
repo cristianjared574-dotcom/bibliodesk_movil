@@ -168,7 +168,7 @@ class CatalogoActivity : AppCompatActivity() {
 
                 R.id.nav_inicio->{
                     startActivity(Intent(this, MainActivity::class.java))
-                    false
+                    true
                 }
 
                 R.id.nav_prestamos -> {
@@ -178,7 +178,7 @@ class CatalogoActivity : AppCompatActivity() {
 
                 R.id.nav_perfil ->{
                     startActivity(Intent(this, PerfilActivity::class.java))
-                    false
+                    true
                 }
 
                 else -> false

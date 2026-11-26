@@ -13,9 +13,12 @@ class clsHistorialPrestamoPresentador(private val vista: HistorialprestamoActivi
     private var listaHistorial: List<dataPrestamoHistorial> = emptyList()
     private var listaEstados: List<String> = listOf("Todos")
 
-    fun iniciar() {
-        val idUsuario = vista.intent.getIntExtra("id_usuario", 1)
-        cargarHistorial(idUsuario)
+    fun iniciar(idUsuario: Int) {
+        if (idUsuario > 0) {
+            cargarHistorial(idUsuario)
+        } else {
+            vista.mostrarError("No se recibió un ID de usuario válido")
+        }
     }
 
     fun seleccionarFiltro(posicion: Int) {

@@ -33,7 +33,7 @@
             app:srcCompat="@drawable/ic_regresar" />
 
         <TextView
-            android:id="@+id/txtSeccion"
+            android:id="@+id/txthistorialprestamo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -89,7 +89,7 @@
             app:tint="#000000" />
     </LinearLayout>
 
-    <!-- Contenedor principal de lectura -->
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
@@ -102,7 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
-        <!-- Tarjeta superior del libro -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,12 +112,13 @@
             android:padding="12dp">
 
             <ImageView
-                android:id="@+id/imgPortadaVisor"
-                android:layout_width="44dp"
-                android:layout_height="56dp"
+                android:id="@+id/ivPortadaVisor"
+                android:layout_width="67dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="Portada del libro"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_agenda" />
+                app:srcCompat="@drawable/ic_catalogo" />
 
             <LinearLayout
                 android:layout_width="0dp"

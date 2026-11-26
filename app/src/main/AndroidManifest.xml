@@ -20,7 +20,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bibliodesk_movil"
         android:usesCleartextTraffic="true">
-
+|
+        <activity
+            android:name=".Vista.RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Vista.CerrarSesionActivity"
+            android:exported="false" />
         <activity
             android:name=".Vista.PerfilActivity"
             android:exported="false"/>
@@ -28,18 +34,20 @@
             android:name=".Vista.DetalleLibroActivity"
             android:exported="false"/>
         <activity
-            android:name=".Vista.LoginActivity"
+            android:name=".Vista.CatalogoActivity"
 
             android:exported="false" />
         <activity
             android:name=".Vista.MainActivity"
             android:exported="false" />
         <activity
+            android:name=".Vista.VisortextoActivity"
+            android:exported="false" />
+        <activity
             android:name=".Vista.HistorialprestamoActivity"
             android:exported="false" />
         <activity
-            android:name=".Vista.CatalogoActivity"
-
+            android:name=".Vista.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
