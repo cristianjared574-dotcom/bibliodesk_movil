@@ -49,7 +49,7 @@ class catalogoLibrosAdaptador (private val activity: CatalogoActivity, private v
             holder.imgDisponible.setImageResource(R.drawable.ic_nodisponible_libro)
             "No disponible"
         }
-        val baseUrl = "http://192.168.100.53/bibliodesk_apis/"
+        val baseUrl = "https://christianjsh.somos4a.org/bibliodesk_apis/"
         val urlImagen = baseUrl + catalogo.rutaPortada
         Glide.with(holder.itemView.context)
             .load(urlImagen)

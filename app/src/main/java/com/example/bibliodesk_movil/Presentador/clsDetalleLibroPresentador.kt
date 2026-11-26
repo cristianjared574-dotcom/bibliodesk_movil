@@ -7,19 +7,25 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class clsDetalleLibroPresentador(private val view: DetalleLibroActivity) {
+
     private val modelo = clsDetalleLibroModelo()
 
-    fun cargarDetalle(idLibro: Int){
-        CoroutineScope(Dispatchers.Main).launch {
-            try{
-                val libro = modelo.obtenerDetalleLibro(idLibro)
+    fun cargarDetalle(idLibro: Int) {
+        if (idLibro <= 0) {
+            view.mostrarError("ID de libro inválido")
+            return
+        }
 
-                if(libro.exito && libro.datos != null){
-                    view.mostrarDetalleLibro(libro.datos)
-                }else{
-                    view.mostrarError(libro.mensaje ?: "No se pudo cargar el detalle del libro")
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val respuesta = modelo.obtenerDetalleLibro(idLibro)
+
+                if (respuesta.exito && respuesta.datos != null) {
+                    view.mostrarDetalleLibro(respuesta.datos)
+                } else {
+                    view.mostrarError(respuesta.mensaje ?: "No se pudo cargar el detalle del libro")
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 view.mostrarError("Error: " + e.localizedMessage)
             }
         }

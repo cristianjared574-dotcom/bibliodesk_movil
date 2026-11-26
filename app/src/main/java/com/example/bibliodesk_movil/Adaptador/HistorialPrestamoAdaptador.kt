@@ -39,7 +39,7 @@ class HistorialPrestamoAdaptador(
         holder.txtDevolucion.text = "Devolución: ${item.fechaDevolucion}"
         holder.txtActividad.text = item.estado
 
-        val baseUrl = "http://10.141.7.81/bibliodesk_apis/"
+        val baseUrl = "https://christianjsh.somos4a.org/bibliodesk_apis/"
         val urlImagen = if (item.rutaImagen.startsWith("http")) {
             item.rutaImagen
         } else {
