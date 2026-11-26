@@ -30,9 +30,8 @@ class DetalleLibroActivity : AppCompatActivity() {
     private lateinit var txtPaginas: TextView
     private lateinit var btnLeerTexto: Button
     private lateinit var btnDisponibilidad: Button
+    private lateinit var  presenter:clsDetalleLibroPresentador
 
-    private val baseUrl = "https://christianjsh.somos4a.org/bibliodesk_apis/"
-    private lateinit var presentador: clsDetalleLibroPresentador
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +56,16 @@ class DetalleLibroActivity : AppCompatActivity() {
         btnLeerTexto = findViewById(R.id.btnLeerTexto)
         btnDisponibilidad = findViewById(R.id.btnDisponibilidad)
 
+        presenter = clsDetalleLibroPresentador(this)
+        // Recuperar el ID del libro enviado desde CatalogoActivity
+        val idLibro = intent.getIntExtra("id_libro", 0)
+
+        // Llamar al Presentador para cargar el detalle
+        if (idLibro > 0) {
+            presenter.cargarDetalle(idLibro)
+        } else {
+            mostrarError("No se recibió un identificador válido del libro")
+        }
         btnRegresar.setOnClickListener { finish() }
 
         configurarMenu()

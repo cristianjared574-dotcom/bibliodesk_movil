@@ -20,13 +20,13 @@ class clsDetalleLibroPresentador(private val view: DetalleLibroActivity) {
             try {
                 val respuesta = modelo.obtenerDetalleLibro(idLibro)
 
-                if (respuesta.exito && respuesta.datos != null) {
-                    view.mostrarDetalleLibro(respuesta.datos)
-                } else {
-                    view.mostrarError(respuesta.mensaje ?: "No se pudo cargar el detalle del libro")
+                if(libro.exito && libro.datos != null){
+                    view.mostrarDetalleLibro(libro.datos)
+                }else{
+                    view.mostrarError(libro.mensaje)
                 }
-            } catch (e: Exception) {
-                view.mostrarError("Error: " + e.localizedMessage)
+            }catch (e: Exception){
+                view.mostrarError("Error:  ${e.localizedMessage ?:"Nose pudo conectar cn el servidor"}")
             }
         }
     }
