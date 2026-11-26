@@ -38,6 +38,9 @@
             android:name=".Vista.HistorialprestamoActivity"
             android:exported="false" />
         <activity
+            android:name=".Vista.VisortextoActivity"
+            android:exported="false" />
+        <activity
             android:name=".Vista.CatalogoActivity"
 
             android:exported="true">

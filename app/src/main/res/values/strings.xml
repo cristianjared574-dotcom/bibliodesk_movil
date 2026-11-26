@@ -45,6 +45,7 @@
     <string name="visitar_pagina">Visitar página oficial</string>
 
     <string name="txtvisor">Visor de texto</string>
+    <string name="txthistorialprestamo">Historial prestamo</string>
 
     <string name="txtSubtituloLogin">Accede a tu cuenta de lector</string>
     <string name="txtEtiquetaMatricula">Ingrese su matrícula:</string>
@@ -60,18 +61,6 @@
     <string name="nav_prestamos">Préstamos</string>
     <string name="nav_perfil">Perfil</string>
 
-    <string name="txtSubtituloLogin">Accede a tu cuenta de lector</string>
-    <string name="txtEtiquetaMatricula">Ingrese su matrícula:</string>
-    <string name="txtEtiquetacontrasena">Ingrese su contraseña:</string>
-    <string name="btnVerDetalle">Ver detalle</string>
-    <string name="txtTituloLogin">Iniciar Sesión</string>
-    <string name="btnIniciarSesion">Acceder a cuenta</string>
-    <string name="etiCrearCuenta">¿Aún no eres usuario?</string>
-    <string name="btnCrearCuenta">Regístrate</string>
-    <string name="nav_inicio">Inicio</string>
-    <string name="nav_catalogo">Catálogo</string>
-    <string name="nav_prestamos">Préstamos</string>
-    <string name="nav_perfil">Perfil</string>
 
-    <string name="txtvisor">Visor de texto</string>
+
 </resources>

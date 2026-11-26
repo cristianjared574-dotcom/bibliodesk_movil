@@ -33,8 +33,10 @@ class DetalleLibroActivity : AppCompatActivity() {
 
     private val baseUrl = "https://christianjsh.somos4a.org/bibliodesk_apis/"
     private lateinit var presentador: clsDetalleLibroPresentador
+    private var idLibro: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        idLibro = intent.getIntExtra("id_libro", 0)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_libro)
 
@@ -61,11 +63,17 @@ class DetalleLibroActivity : AppCompatActivity() {
 
         configurarMenu()
         btnLeerTexto.setOnClickListener {
-            startActivity(Intent(this, VisortextoActivity::class.java))
+            if (idLibro <= 0) {
+                mostrarError("No se recibió un libro válido")
+                return@setOnClickListener
+            }
+            val intent = Intent(this, VisortextoActivity::class.java)
+            intent.putExtra("id_libro", idLibro)
+            intent.putExtra("titulo_libro", txtTitulo.text.toString())
+            startActivity(intent)
         }
 
         presentador = clsDetalleLibroPresentador(this)
-        val idLibro = intent.getIntExtra("id_libro", 0)
         presentador.cargarDetalle(idLibro)
     }
 

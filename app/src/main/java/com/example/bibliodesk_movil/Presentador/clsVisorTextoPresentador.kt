@@ -13,12 +13,13 @@ class clsVisorTextoPresentador(private val vista: VisortextoActivity) {
     private var secciones: List<dataContenidoLibro> = emptyList()
     private var indiceActual = 0
 
-
-    fun iniciar() {
-        val idLibro = 1
+    fun iniciar(idLibro: Int) {
+        if (idLibro <= 0) {
+            vista.mostrarError("No se recibió un libro válido")
+            return
+        }
 
         android.util.Log.d("VISOR", "Consultando libro: $idLibro")
-
         cargarContenido(idLibro)
     }
 
@@ -42,6 +43,7 @@ class clsVisorTextoPresentador(private val vista: VisortextoActivity) {
                 android.util.Log.d("VISOR", "Consultando contenido...")
 
                 secciones = modelo.obtenerSecciones(idLibro)
+                indiceActual = 0
 
                 android.util.Log.d("VISOR", "Secciones recibidas: ${secciones.size}")
 
