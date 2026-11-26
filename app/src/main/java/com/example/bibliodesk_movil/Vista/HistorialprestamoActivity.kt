@@ -1,5 +1,6 @@
 package com.example.bibliodesk_movil.Vista
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -16,6 +17,7 @@ import com.example.bibliodesk_movil.Adaptador.HistorialPrestamoAdaptador
 import com.example.bibliodesk_movil.Modelo.dataPrestamoHistorial
 import com.example.bibliodesk_movil.Presentador.clsHistorialPrestamoPresentador
 import com.example.bibliodesk_movil.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HistorialprestamoActivity : AppCompatActivity() {
 
@@ -23,6 +25,8 @@ class HistorialprestamoActivity : AppCompatActivity() {
     private lateinit var spinnerLibros: Spinner
     private lateinit var RecycleLibros: RecyclerView
     private lateinit var AdaptadorHistorialPrestamo: HistorialPrestamoAdaptador
+
+    private var idUsuario: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,16 @@ class HistorialprestamoActivity : AppCompatActivity() {
             insets
         }
 
+        val prefs = getSharedPreferences("Bibliodesk", MODE_PRIVATE)
+        val idPrefs = prefs.getInt("id_usuario", -1)
+        val idIntent = intent.getIntExtra("id_usuario", -1)
+
+        idUsuario = when {
+            idPrefs > 0 -> idPrefs
+            idIntent > 0 -> idIntent
+            else -> 1 // ID de prueba por defecto si no hay sesión
+        }
+
         spinnerLibros = findViewById(R.id.spnestado)
         RecycleLibros = findViewById(R.id.rvCursos)
 
@@ -42,9 +56,10 @@ class HistorialprestamoActivity : AppCompatActivity() {
         AdaptadorHistorialPrestamo = HistorialPrestamoAdaptador(emptyList())
         RecycleLibros.adapter = AdaptadorHistorialPrestamo
 
+        configurarMenu()
         presentador = clsHistorialPrestamoPresentador(this)
         configurarListeners()
-        presentador.iniciar()
+        presentador.iniciar(idUsuario)
     }
 
     private fun configurarListeners() {
@@ -69,5 +84,41 @@ class HistorialprestamoActivity : AppCompatActivity() {
 
     fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+    }
+    private fun configurarMenu() {
+        val menu = findViewById<BottomNavigationView>(R.id.menuInferior)
+
+        menu.selectedItemId = R.id.nav_prestamos
+
+        menu.setOnItemSelectedListener { opcion ->
+            when (opcion.itemId) {
+                R.id.nav_inicio -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("id_usuario", idUsuario)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.nav_catalogo -> {
+                    val intent = Intent(this, CatalogoActivity::class.java)
+                    intent.putExtra("id_usuario", idUsuario)
+                    startActivity(intent)
+                    true
+                }
+
+                R.id.nav_prestamos -> {
+                    true
+                }
+
+                R.id.nav_perfil -> {
+                    val intent = Intent(this, PerfilActivity::class.java)
+                    intent.putExtra("id_usuario", idUsuario)
+                    startActivity(intent)
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 }

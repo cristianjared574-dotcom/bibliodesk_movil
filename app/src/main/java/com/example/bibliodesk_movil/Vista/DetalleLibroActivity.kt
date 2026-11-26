@@ -30,10 +30,13 @@ class DetalleLibroActivity : AppCompatActivity() {
     private lateinit var txtPaginas: TextView
     private lateinit var btnLeerTexto: Button
     private lateinit var btnDisponibilidad: Button
-    private lateinit var  presenter:clsDetalleLibroPresentador
 
+    private val baseUrl = "https://christianjsh.somos4a.org/bibliodesk_apis/"
+    private lateinit var presentador: clsDetalleLibroPresentador
+    private var idLibro: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        idLibro = intent.getIntExtra("id_libro", 0)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_libro)
 
@@ -56,25 +59,21 @@ class DetalleLibroActivity : AppCompatActivity() {
         btnLeerTexto = findViewById(R.id.btnLeerTexto)
         btnDisponibilidad = findViewById(R.id.btnDisponibilidad)
 
-        presenter = clsDetalleLibroPresentador(this)
-        // Recuperar el ID del libro enviado desde CatalogoActivity
-        val idLibro = intent.getIntExtra("id_libro", 0)
-
-        // Llamar al Presentador para cargar el detalle
-        if (idLibro > 0) {
-            presenter.cargarDetalle(idLibro)
-        } else {
-            mostrarError("No se recibió un identificador válido del libro")
-        }
         btnRegresar.setOnClickListener { finish() }
 
         configurarMenu()
         btnLeerTexto.setOnClickListener {
-            startActivity(Intent(this, VisortextoActivity::class.java))
+            if (idLibro <= 0) {
+                mostrarError("No se recibió un libro válido")
+                return@setOnClickListener
+            }
+            val intent = Intent(this, VisortextoActivity::class.java)
+            intent.putExtra("id_libro", idLibro)
+            intent.putExtra("titulo_libro", txtTitulo.text.toString())
+            startActivity(intent)
         }
 
         presentador = clsDetalleLibroPresentador(this)
-        val idLibro = intent.getIntExtra("id_libro", 0)
         presentador.cargarDetalle(idLibro)
     }
 
