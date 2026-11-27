@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF7F2"
+    android:background="#7B1E1E"
     tools:context=".Vista.PerfilActivity">
 
     <LinearLayout
@@ -24,15 +24,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/btnRegresar"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_regresar" />
 
         <TextView
             android:id="@+id/txtSeccion"
