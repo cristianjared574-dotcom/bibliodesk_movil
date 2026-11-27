@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardPrestamoActual: View
     private lateinit var txtSinPrestamos: TextView
     private lateinit var menuInferior: BottomNavigationView
+    private lateinit var btnVerPrestamo: Button
     private var nivelTexto = 0
     private var lectorVoz: TextToSpeech? = null
     private var vozActivada = false
@@ -58,12 +59,17 @@ class MainActivity : AppCompatActivity() {
         cardPrestamoActual = findViewById(R.id.cardPrestamoActual)
         txtSinPrestamos = findViewById(R.id.txtSinPrestamos)
         menuInferior = findViewById(R.id.menuInferior)
+        btnVerPrestamo = findViewById(R.id.btnVerPrestamo)
         configurarAccesibilidad()
         configurarMenu()
 
         presenter = clsInicioPresentador(this)
 
         btnVerCatalogo.setOnClickListener(this::abrirCatalogo)
+
+        btnVerPrestamo.setOnClickListener{
+            startActivity(Intent(this,HistorialprestamoActivity::class.java))
+        }
 
 
         // evento del menu inferior

@@ -6,7 +6,7 @@
 
     <queries>
         <intent>
-            <action android:name="android.intent.action.TTS_SERVICE"/>
+            <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
     </queries>
 
@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bibliodesk_movil"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".Vista.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".Vista.RegistroActivity"
             android:exported="false" />
@@ -29,13 +31,12 @@
             android:exported="false" />
         <activity
             android:name=".Vista.PerfilActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Vista.DetalleLibroActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Vista.CatalogoActivity"
-
             android:exported="false" />
         <activity
             android:name=".Vista.MainActivity"
@@ -47,7 +48,7 @@
             android:name=".Vista.HistorialprestamoActivity"
             android:exported="false" />
         <activity
-            android:name=".Vista.LoginActivity"
+            android:name=".Vista.PresentacionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
