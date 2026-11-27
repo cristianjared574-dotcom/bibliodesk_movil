@@ -73,9 +73,11 @@ class HistorialprestamoActivity : AppCompatActivity() {
     }
 
     fun mostrarEstados(estados: List<String>) {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, estados)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerLibros.adapter = adapter
+        val adapter = ArrayAdapter(this,R.layout.item_spinner, estados)
+        adapter.setDropDownViewResource(R.layout.item_spinner)
+        findViewById<Spinner>(R.id.spnestado).adapter = adapter
+
+
     }
 
     fun mostrarHistorial(lista: List<dataPrestamoHistorial>) {
